@@ -29,6 +29,8 @@ if (isset($_REQUEST['firstname'])) {
 ?>
 
 <?php include "templateHtmlCssJs.php" ?>
+<?php template_header("Register");?>
+
 
   <style>
     body {

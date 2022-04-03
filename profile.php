@@ -44,6 +44,8 @@ if (isset($_POST['but_upload'])) {
 ?>
 
 <?php include "templateHtmlCssJs.php" ?>
+<?php template_header("Profile");?>
+
 
 <body>
 

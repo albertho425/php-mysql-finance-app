@@ -10,7 +10,7 @@
 ?>
 
 <?php include "templateHtmlCssJs.php" ?>
-
+<?php template_header("Home Page");?>
 
   <style>
     .card a {

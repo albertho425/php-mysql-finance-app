@@ -22,8 +22,9 @@ if (isset($_POST['email'])) {
 ?>
 
 <?php include "templateHtmlCssJs.php" ?>
-  
-  <style>
+<?php template_header("Login"); ?>
+
+<style>
     .login-form {
       width: 340px;
       margin: 50px auto;
