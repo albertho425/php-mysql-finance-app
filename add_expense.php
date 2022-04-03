@@ -91,6 +91,8 @@ if (isset($_GET['delete'])) {
 ?>
 
 <?php include "templateHtmlCssJs.php" ?>
+<?php template_header("Add Expense");?>
+
 
 <body>
 

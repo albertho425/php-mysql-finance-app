@@ -4,6 +4,7 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
 ?>
 
 <?php include "templateHtmlCssJs.php" ?>
+<?php template_header("List all expenses");?>
 
 <body>
 
