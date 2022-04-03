@@ -8,26 +8,10 @@
 
   
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
+<?php include "templateHtmlCssJs.php" ?>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
 
-  <title>Expense Manager - Dashboard</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet">
-
-  <!-- Feather JS for Icons -->
-  <script src="js/feather.min.js"></script>
   <style>
     .card a {
       color: #000;
@@ -40,7 +24,7 @@
     }
   </style>
 
-</head>
+<!-- </head> -->
 
 <body>
 
@@ -233,9 +217,9 @@ if (!$link) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "SELECT expensedate, expensecategory, expense from expenses";
 
-
+$sql = "SELECT month(expensedate), expensecategory, expense from expenses WHERE user_id = '$userid'";
+// $sql = "SELECT year(expensedate), month(expensedate), sum(expense) from expenses GROUP BY year(expensedate), month(expensedate)";
 
 $result = mysqli_query($link, $sql);
 
@@ -244,14 +228,14 @@ if (mysqli_num_rows($result) > 0) {
   echo "<table class='table table-sm'><thead>
         <tr>
           <th scope='col'>Date</th>
-          <th scope='col'>Category</th>
+          <th scope='col'>Column 2</th>
           <th scope='col'>Amount</th>
         </tr></thead>";
   while($row = mysqli_fetch_assoc($result)) {
     // output rows of data
     echo "<tr><td>".$row["expensedate"]."</td>".
-             "<td>".$row["expensecategory"]."</td>".
-             "<td>".$row["expense"].
+              "<td>". $row["expensecategory"]."</td>".
+              "<td>".$row["expense"].
              "</td>
           </tr>";
   }
