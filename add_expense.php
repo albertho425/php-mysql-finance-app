@@ -180,7 +180,7 @@ if (isset($_GET['delete'])) {
                             <div class="form-group row">
                                 <label for="expensename" class="col-sm-6 col-form-label"><b>Enter Name</b></label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control col-sm-12" value="<?php $expensename;  ?>" id="expensename" name="expensename">
+                                    <input type="text" class="form-control col-sm-12" value="<?php echo $expensename;  ?>" id="expensename" name="expensename">
                                 </div>
                             </div>
                             <div class="form-group row">
