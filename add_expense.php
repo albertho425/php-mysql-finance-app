@@ -1,16 +1,27 @@
 <?php
+
+// for trouble shooting purposes
+ini_set('display_errors', 1);
+// for trouble shooting purposes
+ini_set('display_startup_errors', 1);
+// for trouble shooting purposes
+error_reporting(E_ALL);
+
+
 include("session.php");
 $update = false;
 $del = false;
 $expenseamount = "";
+$expensename = "";
 $expensedate = date("Y-m-d");
 $expensecategory = "Entertainment";
 if (isset($_POST['add'])) {
     $expenseamount = $_POST['expenseamount'];
     $expensedate = $_POST['expensedate'];
     $expensecategory = $_POST['expensecategory'];
+    $expensename = $_POST['expensename'];
 
-    $expenses = "INSERT INTO expenses (user_id, expense,expensedate,expensecategory) VALUES ('$userid', '$expenseamount','$expensedate','$expensecategory')";
+    $expenses = "INSERT INTO expenses (user_id, expense,expensedate,expensecategory, expensename) VALUES ('$userid', '$expenseamount','$expensedate','$expensecategory', '$expensename')";
     $result = mysqli_query($con, $expenses) or die("Something Went Wrong!");
     header('location: add_expense.php');
 }
@@ -20,8 +31,9 @@ if (isset($_POST['update'])) {
     $expenseamount = $_POST['expenseamount'];
     $expensedate = $_POST['expensedate'];
     $expensecategory = $_POST['expensecategory'];
+    $expensename = $_POST['expensename'];
 
-    $sql = "UPDATE expenses SET expense='$expenseamount', expensedate='$expensedate', expensecategory='$expensecategory' WHERE user_id='$userid' AND expense_id='$id'";
+    $sql = "UPDATE expenses SET expense='$expenseamount', expensedate='$expensedate', expensecategory='$expensecategory', expensename='$expensename' WHERE user_id='$userid' AND expense_id='$id'";
     if (mysqli_query($con, $sql)) {
         echo "Records were updated successfully.";
     } else {
@@ -30,26 +42,29 @@ if (isset($_POST['update'])) {
     header('location: manage_expense.php');
 }
 
-if (isset($_POST['update'])) {
-    $id = $_GET['edit'];
-    $expenseamount = $_POST['expenseamount'];
-    $expensedate = $_POST['expensedate'];
-    $expensecategory = $_POST['expensecategory'];
+// if (isset($_POST['update'])) {
+//     $id = $_GET['edit'];
+//     $expenseamount = $_POST['expenseamount'];
+//     $expensedate = $_POST['expensedate'];
+//     $expensecategory = $_POST['expensecategory'];
+//     $expensename = $_POST['expensename'];
 
-    $sql = "UPDATE expenses SET expense='$expenseamount', expensedate='$expensedate', expensecategory='$expensecategory' WHERE user_id='$userid' AND expense_id='$id'";
-    if (mysqli_query($con, $sql)) {
-        echo "Records were updated successfully.";
-    } else {
-        echo "ERROR: Could not able to execute $sql. " . mysqli_error($con);
-    }
-    header('location: manage_expense.php');
-}
+//     $sql = "UPDATE expenses SET expense='$expenseamount', expensedate='$expensedate', expensecategory='$expensecategory', expensename='$expensename', WHERE user_id='$userid' AND expense_id='$id'";
+//     if (mysqli_query($con, $sql)) {
+//         echo "Records were updated successfully.";
+//     } else {
+//         echo "ERROR: Could not able to execute $sql. " . mysqli_error($con);
+//     }
+//     header('location: manage_expense.php');
+// }
 
 if (isset($_POST['delete'])) {
     $id = $_GET['delete'];
     $expenseamount = $_POST['expenseamount'];
     $expensedate = $_POST['expensedate'];
     $expensecategory = $_POST['expensecategory'];
+    $expensename = $_POST['expensename'];
+
 
     $sql = "DELETE FROM expenses WHERE user_id='$userid' AND expense_id='$id'";
     if (mysqli_query($con, $sql)) {
@@ -69,6 +84,7 @@ if (isset($_GET['edit'])) {
         $expenseamount = $n['expense'];
         $expensedate = $n['expensedate'];
         $expensecategory = $n['expensecategory'];
+        $expensename = $n['expensename'];
     } else {
         echo ("WARNING: AUTHORIZATION ERROR: Trying to Access Unauthorized data");
     }
@@ -84,6 +100,7 @@ if (isset($_GET['delete'])) {
         $expenseamount = $n['expense'];
         $expensedate = $n['expensedate'];
         $expensecategory = $n['expensecategory'];
+        $expensename = $n['expensename'];
     } else {
         echo ("WARNING: AUTHORIZATION ERROR: Trying to Access Unauthorized data");
     }
@@ -158,6 +175,12 @@ if (isset($_GET['delete'])) {
                                 <label for="expenseamount" class="col-sm-6 col-form-label"><b>Enter Amount($)</b></label>
                                 <div class="col-md-6">
                                     <input type="number" class="form-control col-sm-12" value="<?php echo $expenseamount; ?>" id="expenseamount" name="expenseamount" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="expensename" class="col-sm-6 col-form-label"><b>Enter Name</b></label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control col-sm-12" value="<?php $expensename;  ?>" id="expensename" name="expensename">
                                 </div>
                             </div>
                             <div class="form-group row">

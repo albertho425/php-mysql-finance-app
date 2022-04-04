@@ -72,6 +72,7 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
                                     <th>Date</th>
                                     <th>Amount</th>
                                     <th>Expense Category</th>
+                                    <th>Expense name</th>
                                     <th colspan="2">Action</th>
                                 </tr>
                             </thead>
@@ -82,6 +83,7 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
                                     <td>$<?php echo $row['expensedate']; ?></td>
                                     <td><?php echo '$'.$row['expense']; ?></td>
                                     <td><?php echo $row['expensecategory']; ?></td>
+                                    <td><?php echo $row['expensename']; ?></td>
                                     <td class="text-center">
                                         <a href="add_expense.php?edit=<?php echo $row['expense_id']; ?>" class="btn btn-primary btn-sm" style="border-radius:0%;">Edit</a>
                                     </td>

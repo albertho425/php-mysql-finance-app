@@ -218,8 +218,12 @@ if (!$link) {
 }
 
 
-$sql = "SELECT month(expensedate), expensecategory, expense from expenses WHERE user_id = '$userid'";
-// $sql = "SELECT year(expensedate), month(expensedate), sum(expense) from expenses GROUP BY year(expensedate), month(expensedate)";
+//Why does month function work in phpMyAdmin but not in PHP
+// $sql = "SELECT month(expensedate), expensecategory, expense from expenses WHERE user_id = '$userid'";
+
+
+
+$sql = "SELECT expensedate, expensecategory, expense, expensename from expenses WHERE user_id = '$userid'";
 
 $result = mysqli_query($link, $sql);
 
@@ -230,13 +234,15 @@ if (mysqli_num_rows($result) > 0) {
           <th scope='col'>Date</th>
           <th scope='col'>Column 2</th>
           <th scope='col'>Amount</th>
+          <th scope='col'>Name</th>
         </tr></thead>";
   while($row = mysqli_fetch_assoc($result)) {
     // output rows of data
     echo "<tr><td>".$row["expensedate"]."</td>".
               "<td>". $row["expensecategory"]."</td>".
-              "<td>".$row["expense"].
-             "</td>
+              "<td>".$row["expense"]."</td>".
+              "<td>".$row["expensename"]."</td>.
+             
           </tr>";
   }
   echo "</table>";

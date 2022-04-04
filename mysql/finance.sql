@@ -32,6 +32,7 @@ CREATE TABLE `expenses` (
   `expense` int(20) NOT NULL,
   `expensedate` varchar(15) NOT NULL,
   `expensecategory` varchar(50) NOT NULL
+  `expensename` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
