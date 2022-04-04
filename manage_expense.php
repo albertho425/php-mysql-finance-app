@@ -49,8 +49,8 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
                                 <img class="img img-fluid rounded-circle" src="<?php echo $userprofile ?>" width="25">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Your Profile</a>
-                                <a class="dropdown-item" href="#">Edit Profile</a>
+                                <a class="dropdown-item" href="profile.php">Your Profile</a>
+                                
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="logout.php">Logout</a>
                             </div>
