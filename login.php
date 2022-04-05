@@ -91,7 +91,7 @@ if (isset($_POST['email'])) {
 <body>
   <div class="login-form">
     <form action="" method="POST" autocomplete="off">
-      <h2 class="text-center">D.E.M.S</h2>
+      <h3 class="text-center">Finance Application</h3>
       <p class="hint-text">Login Panel</p>
       <div class="form-group">
         <input type="text" name="email" class="form-control" placeholder="Email" required="required">
@@ -108,6 +108,7 @@ if (isset($_POST['email'])) {
       </div>
     </form>
     <p class="text-center">Don't have an account?<a href="register.php" class="text-danger"> Register Here</a></p>
+    <p class="text-center">Forgot password?<a href="" class="text-danger"> Reset Password</a></p>
   </div>
 </body>
 <!-- Bootstrap core JavaScript -->
