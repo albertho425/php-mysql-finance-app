@@ -173,13 +173,13 @@ if (isset($_GET['delete'])) {
                     <div class="col-md" style="margin:0 auto;">
                         <form action="" method="POST">
                             <div class="form-group row">
-                                <label for="expenseamount" class="col-sm-6 col-form-label"><b>Enter Amount($)</b></label>
+                                <label for="expenseamount" class="col-sm-6 col-form-label"><b>Cost</b></label>
                                 <div class="col-md-6">
                                     <input type="number" class="form-control col-sm-12" value="<?php echo $expenseamount; ?>" id="expenseamount" name="expenseamount" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="expensename" class="col-sm-6 col-form-label"><b>Enter Name</b></label>
+                                <label for="expensename" class="col-sm-6 col-form-label"><b>Name</b></label>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control col-sm-12" value="<?php echo $expensename;  ?>" id="expensename" name="expensename">
                                 </div>
@@ -191,61 +191,27 @@ if (isset($_GET['delete'])) {
                                 </div>
                             </div>
                             
-                        
+                            <!-- For drop down list of categories, if it matches the database, then it is selected on the form
+                             -->
+                             
                             <fieldset class="form-group">
                                  <div class="row">
                                      <legend class="col-form-label col-sm-6 pt-0"><b>Category</b></legend>
                                      <div class="col-md">
 
-                                         <div class="form-check">
-                                             <input class="form-check-input" type="radio" name="expensecategory" id="expensecategory4" value="Medicine" <?php echo ($expensecategory == 'Medicine') ? 'checked' : '' ?>>
-                                             <label class="form-check-label" for="expensecategory4">
-                                                 Medicine
-                                             </label>
-                                         </div>
+                                        <select class="form-control" name="expensecategory" required>
 
-                                         <div class="form-check">
-                                             <input class="form-check-input" type="radio" name="expensecategory" id="expensecategory3" value="Food" <?php echo ($expensecategory == 'Food') ? 'checked' : '' ?>>
-                                             <label class="form-check-label" for="expensecategory3">
-                                                 Food
-                                             </label>
-                                         </div>
-                                         <div class="form-check">
-                                             <input class="form-check-input" type="radio" name="expensecategory" id="expensecategory2" value="Bills & Recharges" <?php echo ($expensecategory == 'Bills & Recharges') ? 'checked' : '' ?>>
-                                             <label class="form-check-label" for="expensecategory2">
-                                                 Bills and Recharges
-                                             </label>
-                                         </div>
-                                         <div class="form-check">
-                                             <input class="form-check-input" type="radio" name="expensecategory" id="expensecategory1" value="Entertainment" <?php echo ($expensecategory == 'Entertainment') ? 'checked' : '' ?>>
-                                             <label class="form-check-label" for="expensecategory1">
-                                                 Entertainment
-                                             </label>
-                                         </div>
-                                         <div class="form-check">
-                                             <input class="form-check-input" type="radio" name="expensecategory" id="expensecategory7" value="Clothings" <?php echo ($expensecategory == 'Clothings') ? 'checked' : '' ?>>
-                                             <label class="form-check-label" for="expensecategory7">
-                                                 Clothings
-                                             </label>
-                                         </div>
-                                         <div class="form-check">
-                                             <input class="form-check-input" type="radio" name="expensecategory" id="expensecategory6" value="Rent" <?php echo ($expensecategory == 'Rent') ? 'checked' : '' ?>>
-                                             <label class="form-check-label" for="expensecategory6">
-                                                 Rent
-                                             </label>
-                                         </div>
-                                         <div class="form-check">
-                                             <input class="form-check-input" type="radio" name="expensecategory" id="expensecategory8" value="Household Items" <?php echo ($expensecategory == 'Household Items') ? 'checked' : '' ?>>
-                                             <label class="form-check-label" for="expensecategory8">
-                                                 Household Items
-                                             </label>
-                                         </div>
-                                         <div class="form-check">
-                                             <input class="form-check-input" type="radio" name="expensecategory" id="expensecategory5" value="Others" <?php echo ($expensecategory == 'Others') ? 'checked' : '' ?>>
-                                             <label class="form-check-label" for="expensecategory5">
-                                                 Others
-                                             </label>
-                                         </div>
+                                            <option value="none" selected>Select a category</option>
+                                            <option value="Food"<?php if($expensecategory == "Food"){ echo " selected='selected'"; } ?>>Food </option>
+                                            <option value="Fun"<?php if($expensecategory == "Fun"){ echo " selected='selected'"; } ?>>Fun </option>
+                                            
+                                            <option value="Savings"<?php if($expensecategory == "Savings"){ echo " selected='selected'"; } ?>>Savings</option>
+                                            <option value="Rent"<?php if($expensecategory == "Rent"){ echo " selected='selected'"; } ?>>Rent</option>
+                                            <option value="Other"<?php if($expensecategory == "Other"){ echo " selected='selected'"; } ?>>Other</option>
+                                            
+                                            <option value="Utilities"<?php if($expensecategory == "Utilities"){ echo " selected='selected'"; } ?>>Utilities </option>
+                                        </select>
+
                                      </div>
                                  </div>
                              </fieldset>
