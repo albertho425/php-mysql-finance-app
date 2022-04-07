@@ -13,15 +13,17 @@ $update = false;
 $del = false;
 $expenseamount = "";
 $expensename = "";
+$expensenote = "";
 $expensedate = date("Y-m-d");
-$expensecategory = "Entertainment";
+$expensecategory = "";
 if (isset($_POST['add'])) {
     $expenseamount = $_POST['expenseamount'];
     $expensedate = $_POST['expensedate'];
     $expensecategory = $_POST['expensecategory'];
     $expensename = $_POST['expensename'];
+    $expensenote = $_POST['expensenote'];
 
-    $expenses = "INSERT INTO expenses (user_id, expense,expensedate,expensecategory,expensename) VALUES ('$userid', '$expenseamount','$expensedate','$expensecategory','$expensename')";
+    $expenses = "INSERT INTO expenses (user_id, expense,expensedate,expensecategory,expensename,expensenote) VALUES ('$userid', '$expenseamount','$expensedate','$expensecategory','$expensename','$expensenote')";
     $result = mysqli_query($con, $expenses) or die("Error in insertion!");
     header('location: add_expense.php');
 }
@@ -32,8 +34,9 @@ if (isset($_POST['update'])) {
     $expensedate = $_POST['expensedate'];
     $expensecategory = $_POST['expensecategory'];
     $expensename = $_POST['expensename'];
+    $expensenote = $_POST['expensenote'];
 
-    $sql = "UPDATE expenses SET expense='$expenseamount', expensedate='$expensedate', expensecategory='$expensecategory', expensename='$expensename' WHERE user_id='$userid' AND expense_id='$id'";
+    $sql = "UPDATE expenses SET expense='$expenseamount', expensedate='$expensedate', expensecategory='$expensecategory', expensename='$expensename' expensenote='$expensenote' WHERE user_id='$userid' AND expense_id='$id'";
     if (mysqli_query($con, $sql)) {
         echo "Records were updated successfully.";
     } else {
@@ -48,8 +51,9 @@ if (isset($_POST['update'])) {
     $expensedate = $_POST['expensedate'];
     $expensecategory = $_POST['expensecategory'];
     $expensename = $_POST['expensename'];
+    $expensenote = $_POST['expensenote'];
 
-    $sql = "UPDATE expenses SET expense='$expenseamount', expensedate='$expensedate', expensecategory='$expensecategory', expensename='$expensename', WHERE user_id='$userid' AND expense_id='$id'";
+    $sql = "UPDATE expenses SET expense='$expenseamount', expensedate='$expensedate', expensecategory='$expensecategory', expensename='$expensename', expensenote='$expensenote' WHERE user_id='$userid' AND expense_id='$id'";
     if (mysqli_query($con, $sql)) {
         echo "Records were updated successfully.";
     } else {
@@ -64,6 +68,7 @@ if (isset($_POST['delete'])) {
     $expensedate = $_POST['expensedate'];
     $expensecategory = $_POST['expensecategory'];
     $expensename = $_POST['expensename'];
+    $expensenote = $_POST['expensenote'];
 
 
     $sql = "DELETE FROM expenses WHERE user_id='$userid' AND expense_id='$id'";
@@ -85,6 +90,7 @@ if (isset($_GET['edit'])) {
         $expensedate = $n['expensedate'];
         $expensecategory = $n['expensecategory'];
         $expensename = $n['expensename'];
+        $expensenote = $n['expensenote'];
     } else {
         echo ("WARNING: AUTHORIZATION ERROR: Trying to Access Unauthorized data");
     }
@@ -101,6 +107,7 @@ if (isset($_GET['delete'])) {
         $expensedate = $n['expensedate'];
         $expensecategory = $n['expensecategory'];
         $expensename = $n['expensename'];
+        $expensenote = $n['expensenote'];
     } else {
         echo ("WARNING: AUTHORIZATION ERROR: Trying to Access Unauthorized data");
     }
@@ -202,6 +209,7 @@ if (isset($_GET['delete'])) {
                                         <select class="form-control" name="expensecategory" required>
 
                                             <option value="none" selected>Select a category</option>
+                                            <option value="Health"<?php if($expensecategory == "Health"){ echo " selected='selected'"; } ?>>Health </option>
                                             <option value="Food"<?php if($expensecategory == "Food"){ echo " selected='selected'"; } ?>>Food </option>
                                             <option value="Fun"<?php if($expensecategory == "Fun"){ echo " selected='selected'"; } ?>>Fun </option>
                                             
@@ -215,6 +223,13 @@ if (isset($_GET['delete'])) {
                                      </div>
                                  </div>
                              </fieldset>
+
+                             <div class="form-group row">
+                                <label for="expensenote" class="col-sm-6 col-form-label"><b>Note</b></label>
+                                <div class="col-md-6">
+                                    <textarea class="form-control" id="expensenote" rows="3" value="<?php echo $expensenote;  ?>"></textarea>
+                                </div>
+                            </div>
                             
                             <div class="form-group row">
                                 <div class="col-md-12 text-right">
