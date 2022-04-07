@@ -1,3 +1,16 @@
+<?php 
+
+/**
+ *  Load HTML, CSS, and JS and output the title of the page
+ *
+ * @param [type] $title
+ * @return void
+ */
+
+function template_header($title) {
+
+echo <<<EOT
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +21,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Repeating HTML</title>
+    <title>$title</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -23,4 +36,11 @@
     <!-- Feather JS for Icons -->
     <script src="js/feather.min.js"></script>
 
+
+
 </head>
+EOT;
+
+}
+
+?>

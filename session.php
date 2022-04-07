@@ -6,12 +6,14 @@ header("Location: login.php");
 exit();
 }
 
+// A session is stored on server, a cookie is stored on visitor's browser.  Note the username is first name and last name combined.
+
 $sess_email = $_SESSION["email"];
 $sql = "SELECT user_id, firstname, lastname, email, profile_path FROM users WHERE email = '$sess_email'";
 $result = $con->query($sql);
 
+
 if ($result->num_rows > 0) {
-  // output data of each row
   while($row = $result->fetch_assoc()) {
     $userid=$row["user_id"];
     $firstname = $row["firstname"];
@@ -21,9 +23,9 @@ if ($result->num_rows > 0) {
     $userprofile="uploads/".$row["profile_path"];
   }
 } else {
-    $userid="GHX1Y2";
-    $username ="Jhon Doe";
-    $useremail="mailid@domain.com";
+    $userid="ABC123";
+    $username ="Jane Doe";
+    $useremail="jane.doe@outlook.com";
     $userprofile="Uploads/default_profile.png";
 }
 ?>
