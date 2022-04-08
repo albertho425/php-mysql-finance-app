@@ -41,6 +41,21 @@ echo <<<EOT
 </head>
 EOT;
 
+
+/**
+ * Removes whitespace, backslashes, and concerts some predefined characters to HTML
+ *
+ * @param [type] $data
+ * @return void
+ */
+function data_check($data) {
+
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+
 }
 
 ?>
