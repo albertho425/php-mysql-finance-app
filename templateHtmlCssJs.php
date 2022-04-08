@@ -1,7 +1,7 @@
 <?php 
 
 /**
- *  Load HTML, CSS, and JS and output the title of the page
+ *  Load HTML, Header Nav Bar, CSS, and JS and output the title of the page
  *
  * @param [type] $title
  * @return void
@@ -20,6 +20,20 @@ echo <<<EOT
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+
+    <div class="pos-f-t">
+      <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+          <h4 class="text-white">Navigation Bar</h4>
+            <span class="text-muted">Add menu items here</span>
+        </div>
+      </div>
+      <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
+    </div>
 
     <title>$title</title>
 
@@ -57,6 +71,10 @@ function data_check($data) {
   }
 
 }
+
+/**
+ * Display a footer on each page
+ */
 
 function display_footer() { 
 
