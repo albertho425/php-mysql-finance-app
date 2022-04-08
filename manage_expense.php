@@ -198,6 +198,9 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
         feather.replace()
     </script>
 
+<?php display_footer();?>
+
+
 </body>
 
 </html>

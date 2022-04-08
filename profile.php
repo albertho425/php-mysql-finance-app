@@ -211,6 +211,7 @@ if (isset($_POST['but_upload'])) {
             });
         });
     </script>
+  <?php display_footer();?>
 
 </body>
 

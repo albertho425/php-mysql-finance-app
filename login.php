@@ -110,6 +110,8 @@ if (isset($_POST['email'])) {
     <p class="text-center">Don't have an account?<a href="register.php" class="text-danger"> Register Here</a></p>
     <p class="text-center">Forgot password?<a href="" class="text-danger"> Reset Password</a></p>
   </div>
+  <?php display_footer();?>
+
 </body>
 <!-- Bootstrap core JavaScript -->
 <script src="js/jquery.slim.min.js"></script>

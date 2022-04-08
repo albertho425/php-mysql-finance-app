@@ -5,12 +5,13 @@
 
   $exp_date_line = mysqli_query($con, "SELECT expensedate FROM expenses WHERE user_id = '$userid' GROUP BY expensedate");
   $exp_amt_line = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' GROUP BY expensedate");
-
-  
 ?>
+
 
 <?php include "templateHtmlCssJs.php" ?>
 <?php template_header("Home Page");?>
+
+
 
   <style>
     .card a {
@@ -226,7 +227,7 @@ if (isset($_GET['page_no']) && $_GET['page_no']!="") {
   $page_no = 1;
   }
 
-$total_records_per_page = 3;
+$total_records_per_page = 2;
 $offset = ($page_no-1) * $total_records_per_page;
 $previous_page = $page_no - 1;
 $next_page = $page_no + 1;
@@ -315,6 +316,7 @@ $link->close();
   </div>
   <!-- /#wrapper -->
   
+  <?php display_footer();?>
 
 </body>
 

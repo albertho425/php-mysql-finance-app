@@ -263,5 +263,7 @@ if (isset($_GET['delete'])) {
     <script>
 
     </script>
+      <?php display_footer();?>
+
 </body>
 </html>

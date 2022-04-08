@@ -58,4 +58,16 @@ function data_check($data) {
 
 }
 
+function display_footer() { 
+
+  echo <<<EOT
+  <nav class="navbar fixed-bottom navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Daily Expense Application</a>
+  </nav>
+
+  EOT;
+
+}
+
 ?>
+
