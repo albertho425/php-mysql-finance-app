@@ -9,19 +9,21 @@ error_reporting(E_ALL);
 
 
 include("session.php");
+
+// define variables and set to empty values
+$expenseamount = $expensename = $expensenote = $expensecategory =  "";
+$expensedate = date("Y-m-d");
+
+//$update and $del determine the color and message of the submit button
 $update = false;
 $del = false;
-$expenseamount = "";
-$expensename = "";
-$expensenote = "";
-$expensedate = date("Y-m-d");
-$expensecategory = "";
+
 if (isset($_POST['add'])) {
     $expenseamount = $_POST['expenseamount'];
     $expensedate = $_POST['expensedate'];
     $expensecategory = $_POST['expensecategory'];
     $expensename = $_POST['expensename'];
-    $expensenote = $_POST['expensenote'];
+    $expensenote = trim($_POST['expensenote']);
 
     $expenses = "INSERT INTO expenses (user_id, expense,expensedate,expensecategory,expensename,expensenote) VALUES ('$userid', '$expenseamount','$expensedate','$expensecategory','$expensename','$expensenote')";
     $result = mysqli_query($con, $expenses) or die("Error in insertion!");
@@ -34,26 +36,9 @@ if (isset($_POST['update'])) {
     $expensedate = $_POST['expensedate'];
     $expensecategory = $_POST['expensecategory'];
     $expensename = $_POST['expensename'];
-    $expensenote = $_POST['expensenote'];
+    $expensenote = trim($_POST['expensenote']);
 
     $sql = "UPDATE expenses SET expense='$expenseamount', expensedate='$expensedate', expensecategory='$expensecategory', expensename='$expensename' expensenote='$expensenote' WHERE user_id='$userid' AND expense_id='$id'";
-    if (mysqli_query($con, $sql)) {
-        echo "Records were updated successfully.";
-    } else {
-        echo "ERROR in update: Could not able to execute $sql. " . mysqli_error($con);
-    }
-    header('location: manage_expense.php');
-}
-
-if (isset($_POST['update'])) {
-    $id = $_GET['edit'];
-    $expenseamount = $_POST['expenseamount'];
-    $expensedate = $_POST['expensedate'];
-    $expensecategory = $_POST['expensecategory'];
-    $expensename = $_POST['expensename'];
-    $expensenote = $_POST['expensenote'];
-
-    $sql = "UPDATE expenses SET expense='$expenseamount', expensedate='$expensedate', expensecategory='$expensecategory', expensename='$expensename', expensenote='$expensenote' WHERE user_id='$userid' AND expense_id='$id'";
     if (mysqli_query($con, $sql)) {
         echo "Records were updated successfully.";
     } else {
@@ -68,7 +53,7 @@ if (isset($_POST['delete'])) {
     $expensedate = $_POST['expensedate'];
     $expensecategory = $_POST['expensecategory'];
     $expensename = $_POST['expensename'];
-    $expensenote = $_POST['expensenote'];
+    $expensenote = trim($_POST['expensenote']);
 
 
     $sql = "DELETE FROM expenses WHERE user_id='$userid' AND expense_id='$id'";
@@ -227,7 +212,13 @@ if (isset($_GET['delete'])) {
                              <div class="form-group row">
                                 <label for="expensenote" class="col-sm-6 col-form-label"><b>Note</b></label>
                                 <div class="col-md-6">
-                                    <textarea class="form-control" id="expensenote" rows="3" value="<?php echo $expensenote;  ?>"></textarea>
+                                
+                                    <!-- <input type="text" class="form-control col-sm-12" value="<?php //echo $expensenote;  ?>" id="expensenote" name="expensenote"> -->
+
+                                    <!-- Note textarea will submit to database, edit a record in database, but will not output from database to textarea.  using input type="text" works normally.  come back to this later. -->
+                                    
+                                    <textarea type-"text" class="form-control" name="expensenote" rows="3" value="<?php echo $expensenote;?>"></textarea>
+                                    
                                 </div>
                             </div>
                             
