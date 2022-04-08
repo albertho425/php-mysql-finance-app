@@ -20,9 +20,11 @@ if (isset($_POST['email'])) {
 } else {
 }
 ?>
-  
+
 <?php include "templateHtmlCssJs.php" ?>
+<!-- loads HTML template and Bootstrap   -->
 <?php template_header("Login"); ?>
+<!-- loads custom styling -->
 <link href="css/login.css" rel="stylesheet">
 
 
