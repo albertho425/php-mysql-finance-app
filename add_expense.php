@@ -105,6 +105,7 @@ if (isset($_GET['delete'])) {
 
 <body>
 
+    <?php display_header();?>
     <div class="d-flex" id="wrapper">
 
         <!-- Sidebar -->

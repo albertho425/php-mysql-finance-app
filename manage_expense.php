@@ -7,7 +7,7 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
 <?php template_header("List all expenses");?>
 
 <body>
-
+    <?php display_header();?>
     <div class="d-flex" id="wrapper">
 
         <!-- Sidebar -->

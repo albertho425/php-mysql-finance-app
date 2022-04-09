@@ -48,6 +48,7 @@ if (isset($_POST['but_upload'])) {
 
 
 <body>
+    <?php display_header();?>
 
     <div class="d-flex" id="wrapper">
 

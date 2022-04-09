@@ -6,6 +6,7 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
 <?php include "templateHtmlCssJs.php" ?>
 
 <body>
+    <?php display_header();?>
 
     <div class="d-flex" id="wrapper">
 
