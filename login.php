@@ -33,26 +33,28 @@ if (isset($_POST['email'])) {
   
   <div class="login-form">
     <form action="" method="POST" autocomplete="off">
-      <h3 class="text-center">Finance Application</h3>
-      <p class="hint-text">Login Panel</p>
+      <h3 class="text-center">Expense App</h3>
       <div class="form-group">
+        <div class="col text-center"><br>
+            <a href="manage_expense.php"><img src="icon/maex.png" width="57px" /></a>
+        </div><br>
         <input type="text" name="email" class="form-control" placeholder="Email" required="required">
       </div>
       <div class="form-group">
         <input type="password" name="password" class="form-control" placeholder="Password" required="required">
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-success btn-block" style="border-radius:0%;">Login</button>
+        <button type="submit" class="btn btn-lg btn-success">Login</button>
+        <span style="padding-left:10px;" class="">New User?<a href="register.php" class="text-danger"> Register Here</a></span>
       </div>
       <div class="clearfix">
         <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
-        
-      </div>
+    </div>
     </form>
-    <p class="text-center">Don't have an account?<a href="register.php" class="text-danger"> Register Here</a></p>
-    <p class="text-center">Forgot password?<a href="" class="text-danger"> Reset Password</a></p>
-  </div>
-  
+    
+      <p class="text-center">Forgot Password?<a href="reset.php" class="text-danger"> Reset Here</a></p>
+    </div>
+    
 
 </body>
 <!-- Bootstrap core JavaScript -->
