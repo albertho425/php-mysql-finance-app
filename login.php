@@ -45,7 +45,7 @@ if (isset($_POST['email'])) {
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-lg btn-success">Login</button>
-        <span style="padding-left:10px;" class="">New User?<a href="register.php" class="text-danger"> Register Here</a></span>
+        <span style="padding-left:10px;" class="">New User?<a href="signup.php" class="text-danger"> Sign up Here</a></span>
       </div>
       <div class="clearfix">
         <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
