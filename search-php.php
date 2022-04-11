@@ -1,9 +1,13 @@
-<?php include("session.php"); ?>
+<?php include "session.php"?>
+<?php include "templateHtmlCssJs.php" ?>
+<?php template_header("Search Page");?>
+
+<!-- loads custom styling -->
+<link href="css/search.css" rel="stylesheet">
 
 
 <?php
-/* Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
+$search = $_POST['search'];
 $link = mysqli_connect("localhost", "root", "root", "dailyexpense");
 
  
@@ -12,55 +16,39 @@ if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
  
-if(isset($_REQUEST["term"])){
+
     // Prepare a select statement
-    $sql = "SELECT * FROM expenses WHERE expensecategory LIKE ?";
+    $sql = "SELECT * FROM expenses WHERE expensename LIKE '%$search%' OR expensecategory LIKE '%$search%'";
     
-    if($stmt = mysqli_prepare($link, $sql)){
-        // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "s", $param_term);
-        
-        // Set parameters
-        $param_term = $_REQUEST["term"] . '%';
-        
-        // Attempt to execute the prepared statement
-        if(mysqli_stmt_execute($stmt)){
-            $result = mysqli_stmt_get_result($stmt);
+    $result = $link->query($sql);
             
-            // Check number of rows in the result set
-            if(mysqli_num_rows($result) > 0){
-                // Fetch result rows as an associative array
+    if ($result->num_rows > 0) {
 
-                echo "<table class='table table-md'><thead>
-                    <tr>
-                    <th scope='col'>Date</th>
-                    <th scope='col'>Category</th>
-                    <th scope='col'>Amount</th>
-                    <th scope='col'>Name</th>
-                    </tr></thead>";
+        echo "<table class='table table-md'><thead>
+            <tr>
+            <th scope='col'>Date</th>
+            <th scope='col'>Category</th>
+            <th scope='col'>Amount</th>
+            <th scope='col'>Name</th>
+            <th colspan='2'>Action</th>
+            </tr></thead>";
 
-                while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            while($row = $result->fetch_assoc() ){                
 
-                    echo "<tr><td>".$row["expensedate"]."</td>".
-                    "<td>". $row["expensecategory"]."</td>".
-                    "<td>".$row["expense"]."</td>".
-                    "<td>".$row["expensename"]."</td>" .
-                    "</tr>";
-                    
-                }
-            } else{
-                echo "<p>No matches found</p>";
-            }
-        } else{
-            echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+            echo "<tr><td>".$row["expensedate"]."</td>".
+            "<td>". $row["expensecategory"]."</td>".
+            "<td>".$row["expense"]."</td>".
+            "<td>".$row["expensename"]."</td>" .
+            "</tr>";            
         }
+    } 
+    else {
+        echo "<p>No matches found</p>";
     }
+       
     echo "</table>";
      
-    // Close statement
-    mysqli_stmt_close($stmt);
-}
- 
-// close connection
-mysqli_close($link);
+
+$link->close();
+display_footer();
 ?>

@@ -8,7 +8,7 @@ body, html {
 }
 body {
     display:table-cell;
-    /* vertical-align:middle; */
+    vertical-align:middle;
 }
 form {
     display:table;/* shrinks to fit content */
