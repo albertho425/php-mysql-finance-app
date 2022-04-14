@@ -42,7 +42,7 @@
       <div class="list-group list-group-flush">
         <a href="index.php" class="list-group-item list-group-item-action sidebar-active"><span data-feather="home"></span> Dashboard</a>
         <a href="add_expense.php" class="list-group-item list-group-item-action "><span data-feather="plus-square"></span> Add Expenses</a>
-        <a href="manage_expense.php" class="list-group-item list-group-item-action "><span data-feather="dollar-sign"></span> Manage Expenses</a>
+        <a href="manage_expense.php" class="list-group-item list-group-item-action "><span data-feather="dollar-sign"></span>Display Expenses</a>
       </div>
       <div class="sidebar-heading">Settings </div>
       <div class="list-group list-group-flush">
@@ -54,30 +54,7 @@
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
-
-      <nav class="navbar navbar-expand-lg navbar-light  border-bottom">
-
-
-        <button class="toggler" type="button" id="menu-toggle" aria-expanded="false">
-          <span data-feather="menu"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="img img-fluid rounded-circle" src="<?php echo $userprofile ?>" width="25">
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="profile.php">Your Profile</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="logout.php">Logout</a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
+      
       <div class="container-fluid">
         <h3 class="mt-4">Dashboard</h3>
         <div class="row">
@@ -86,19 +63,24 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col text-center">
-                    <a href="add_expense.php"><img src="icon/addex.png" width="57px" />
+                    <a href="add_expense.php"><img src="icon/money-3.png" width="57px" />
                       <p>Add Expenses</p>
                     </a>
                   </div>
                   
                   <div class="col text-center">
-                    <a href="manage_expense.php"><img src="icon/maex.png" width="57px" />
-                      <p>Manage Expenses</p>
+                    <a href="manage_expense.php"><img src="icon/money-2.png" width="57px" />
+                      <p>Edit Expenses</p>
                     </a>
                   </div>
                   <div class="col text-center">
-                    <a href="profile.php"><img src="icon/prof.png" width="57px" />
+                    <a href="profile.php"><img src="icon/user.png" width="57px" />
                       <p>User Profile</p>
+                    </a>
+                  </div>
+                  <div class="col text-center">
+                    <a href="logout.php"><img src="icon/logout.png" width="57px" />
+                      <p>Logout</p>
                     </a>
                   </div>
                 </div>

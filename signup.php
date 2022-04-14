@@ -38,7 +38,7 @@ if (isset($_REQUEST['firstname'])) {
     <form action="" method="POST" autocomplete="off">
     <h3 class="text-center">Sign Up</h3>
       <div class="col text-center"><br>
-            <a href="manage_expense.php"><img src="icon/maex.png" width="57px" /></a>
+            <a href="manage_expense.php"><img src="icon/contract.png" width="57px" /></a>
         </div><br>
       <div class="form-group">
         <div class="row">

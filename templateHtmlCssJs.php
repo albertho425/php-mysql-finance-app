@@ -21,20 +21,6 @@ echo <<<EOT
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <div class="pos-f-t">
-      <div class="collapse" id="navbarToggleExternalContent">
-        <div class="bg-dark p-4">
-          <h4 class="text-white">Navigation Bar</h4>
-            <span class="text-muted">Add menu items here</span>
-        </div>
-      </div>
-      <nav class="navbar navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </nav>
-    </div>
-
     <title>$title</title>
 
     <!-- Bootstrap core CSS -->
@@ -85,6 +71,33 @@ function display_footer() {
 
   EOT;
 
+}
+
+function display_header() {
+  
+  echo <<<EOT
+  <div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+      <div class="bg-dark p-4">
+        <h4 class="text-white">Navigation Bar</h4>
+        <a class="nav-item nav-link" href="http://localhost:8888/Finance/">Home</a>
+        <a class="nav-item nav-link" href="http://localhost:8888/Finance/add_expense.php">Add an expense</a>
+        <a class="nav-item nav-link" href="http://localhost:8888/Finance/manage_expense.php">Edit an expense</a>
+        <a class="nav-item nav-link" href="http://localhost:8888/Finance/search.php">Search expense</a>
+        <a class="nav-item nav-link" href="http://localhost:8888/Finance/profile.php">Profile</a>
+        <a class="nav-item nav-link" href="http://localhost:8888/Finance/logout.php">Logout</a>
+        <a class="nav-item nav-link" href="http://localhost:8888/Finance/login.php">Login</a>
+      </div>
+    </div>
+      
+    <nav class="navbar navbar-dark bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+  </div>
+
+  EOT;
 }
 
 ?>

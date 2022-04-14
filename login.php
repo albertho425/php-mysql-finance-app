@@ -36,7 +36,7 @@ if (isset($_POST['email'])) {
       <h3 class="text-center">Expense App</h3>
       <div class="form-group">
         <div class="col text-center"><br>
-            <a href="manage_expense.php"><img src="icon/maex.png" width="57px" /></a>
+            <a href="manage_expense.php"><img src="icon/money-bag.png" width="57px" /></a>
         </div><br>
         <input type="text" name="email" class="form-control" placeholder="Email" required="required">
       </div>
