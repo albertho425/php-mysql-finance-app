@@ -59,7 +59,8 @@ if (isset($_REQUEST['firstname'])) {
         <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-success btn-lg" style="border-radius:0%;">Register</button>
+        <a class="btn btn-md btn-light" href="http://localhost:8888/Finance/login.php">Cancel</a>
+        <button type="submit" class="btn btn-success btn-md" style="border-radius:0%;">Register</button>
       </div>
     </form>
     <div class="text-center">Already have an account? <a class="text-success" href="login.php">Login Here</a></div>

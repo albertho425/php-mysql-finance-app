@@ -218,19 +218,24 @@ if (isset($_GET['delete'])) {
 
                                     <!-- Note textarea will submit to database, edit a record in database, but will not output from database to textarea.  using input type="text" works normally.  come back to this later. -->
                                     
-                                    <textarea type-"text" class="form-control" name="expensenote" rows="3" value="<?php echo $expensenote;?>"></textarea>
+                                    <textarea type="text" class="form-control" name="expensenote" rows="3" value="<?php echo $expensenote;?>"></textarea>
                                     
                                 </div>
                             </div>
                             
+                            <!-- Display buttun for cancel, add, edit and delete -->
+
                             <div class="form-group row">
                                 <div class="col-md-12 text-right">
                                     <?php if ($update == true) : ?>
-                                        <button class="btn btn-lg btn-block btn-warning" style="border-radius: 0%;" type="submit" name="update">Update</button>
+                                        <a class="btn btn-md btn-light" href="http://localhost:8888/Finance/index.php">Cancel</a>
+                                        <button class="btn btn-md btn-warning" type="submit" name="update">Update</button>
                                     <?php elseif ($del == true) : ?>
-                                        <button class="btn btn-lg btn-block btn-danger" style="border-radius: 0%;" type="submit" name="delete">Delete</button>
+                                        <a class="btn btn-md btn-light" href="http://localhost:8888/Finance/index.php">Cancel</a>
+                                        <button class="btn btn-md btn-danger" type="submit" name="delete">Delete</button>
                                     <?php else : ?>
-                                        <button type="submit" name="add" class="btn btn-lg btn-block btn-success" style="border-radius: 0%;">Add Expense</button>
+                                        <a class="btn btn-md btn-light" href="http://localhost:8888/Finance/index.php">Cancel</a>
+                                        <button class="btn btn-md btn-success" type="submit" name="delete">Add</button>
                                     <?php endif ?>
                                 </div>
                             </div>

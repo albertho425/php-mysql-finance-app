@@ -159,8 +159,11 @@ if (isset($_POST['but_upload'])) {
                             </div>
                             <div class="form-group">
                                 <div class="col-md">
+                                <div class="col-md-12 text-right">
                                     <br>
-                                    <button class="btn btn-block btn-md btn-success" style="border-radius:0%;" name="save" type="submit">Save Changes</button>
+                                    <a class="btn btn-md btn-light" href="http://localhost:8888/Finance/index.php">Cancel</a>
+                                    <button class="btn btn-md btn-success" style="border-radius:0%;" name="save" type="submit">Save Changes</button>
+                                </div>
                                 </div>
                             </div>
                         </form>
