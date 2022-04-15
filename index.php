@@ -42,7 +42,7 @@
       <div class="list-group list-group-flush">
         <a href="index.php" class="list-group-item list-group-item-action sidebar-active"><span data-feather="home"></span> Dashboard</a>
         <a href="add_expense.php" class="list-group-item list-group-item-action "><span data-feather="plus-square"></span> Add Expenses</a>
-        <a href="manage_expense.php" class="list-group-item list-group-item-action "><span data-feather="dollar-sign"></span>Display Expenses</a>
+        <a href="manage_expense.php" class="list-group-item list-group-item-action "><span data-feather="dollar-sign"></span>Edit Expenses</a>
       </div>
       <div class="sidebar-heading">Settings </div>
       <div class="list-group list-group-flush">
@@ -298,7 +298,7 @@ $link->close();
   </div>
   <!-- /#wrapper -->
   
-  <?php display_footer();?>
+  
 
 </body>
 

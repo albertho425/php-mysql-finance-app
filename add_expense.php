@@ -120,7 +120,7 @@ if (isset($_GET['delete'])) {
                 <a href="index.php" class="list-group-item list-group-item-action"><span data-feather="home"></span> Dashboard</a>
                 <a href="add_expense.php" class="list-group-item list-group-item-action sidebar-active"><span data-feather="plus-square"></span> Add Expenses</a>
                 <a href="add_category.php" class="list-group-item list-group-item-action "><span data-feather="plus-square"></span> Add Category</a>
-                <a href="manage_expense.php" class="list-group-item list-group-item-action"><span data-feather="dollar-sign"></span> Manage Expenses</a>
+                <a href="manage_expense.php" class="list-group-item list-group-item-action"><span data-feather="dollar-sign"></span> Edit Expenses</a>
             </div>
             <div class="sidebar-heading">Settings </div>
             <div class="list-group list-group-flush">
@@ -140,24 +140,11 @@ if (isset($_GET['delete'])) {
                     <span data-feather="menu"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="img img-fluid rounded-circle" src="<?php echo $userprofile ?>" width="25">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="profile.php">Your Profile</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="logout.php">Logout</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
             </nav>
 
-            <div class="container">
-                <h3 class="mt-4 text-center">Add Your Daily Expenses</h3>
+            <div class="container-fluid">
+            
+                <h3 class="mt-4 text-center">Add Expenses</h3>
                 <hr>
                 <div class="row ">
 
