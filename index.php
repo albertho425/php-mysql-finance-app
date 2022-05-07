@@ -5,6 +5,18 @@
 
   $exp_date_line = mysqli_query($con, "SELECT expensedate FROM expenses WHERE user_id = '$userid' GROUP BY expensedate");
   $exp_amt_line = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' GROUP BY expensedate");
+
+  //$numberOfTransactions = mysqli_query($con, "SELECT COUNT(*) FROM expenses WHERE user_id = '$userid'");
+  //ßf$numberOfTransactions = mysqli_query($con, "SELECT COUNT(*) FROM expenses");
+
+  $result = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$userid'");
+
+  
+  $count = mysqli_num_rows($result);
+  
+  echo $count;
+  
+
 ?>
 
 
@@ -89,7 +101,31 @@
           </div>
         </div>
 
-        <h3 class="mt-4">Full-Expense Report</h3>
+        <h4 class="mt-4">Statistics</h4>
+
+        <div class="row">
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title text-center">Total Transactions</h5>
+              </div>
+              <div class="card-body">
+                <h3 class="text-center"> <?php  echo $count; ?></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title text-center">Stat</h5>
+              </div>
+              <div class="card-body">
+              <h3 class="text-center"> <?php  echo $count; ?></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col-md">
             <div class="card">
@@ -112,6 +148,7 @@
             </div>
           </div>
         </div>
+       
 
 
       
@@ -202,8 +239,16 @@
     
   </div>
   <!-- /#wrapper -->
-  
-  
+<?php
+
+?>  
+<h3>Hello</h3>
+  <h3><?php echo $count; ?></h3>
+  <?php 
+
+ 
+?>
+<!-- mysqli_result Object ( [current_field] => 0 [field_count] => 1 [lengths] => [num_rows] => 1 [type] => 0 ) -->
 
 </body>
 
