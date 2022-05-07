@@ -8,13 +8,19 @@
 
   //$numberOfTransactions = mysqli_query($con, "SELECT COUNT(*) FROM expenses WHERE user_id = '$userid'");
   $total_spent = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid'");
+  //access the object colum index 0 or associative key
+  $total_amount = $total_spent->fetch_array()[0] ?? '';
 
+  // number o total expense entries for a user
   $result = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$userid'");
   // convert object to string
   $count = mysqli_num_rows($result);
   
-  //access the object colum index 0 or associative key
-  $total_amount = $total_spent->fetch_array()[0] ?? '';
+  $total_spent_last_30_days = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE expensedate > NOW() - INTERVAL 30 day AND user_id = '$userid'");
+  $total_spent_last_30_days_output = $total_spent_last_30_days->fetch_array()[0] ?? '';
+
+  $expenses_last_30_days = mysqli_query($con, "SELECT * from expenses WHERE expensedate > NOW() - INTERVAL 30 day AND user_id = '$userid'");
+  $expenses_last_30_days_output = $expenses_last_30_days->fetch_array()[0] ?? '';
 
 ?>
 
@@ -120,6 +126,29 @@
               </div>
               <div class="card-body">
               <h3 class="text-center"> <?php  echo $total_amount; ?></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title text-center">Total Transactions last 30 days</h5>
+              </div>
+              <div class="card-body">
+                <h3 class="text-center"> <?php  echo $expenses_last_30_days_output ?></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title text-center">Total Spent last 30 days $</h5>
+              </div>
+              <div class="card-body">
+              <h3 class="text-center"> <?php  echo $total_spent_last_30_days_output ?></h3>
               </div>
             </div>
           </div>
