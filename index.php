@@ -7,15 +7,14 @@
   $exp_amt_line = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' GROUP BY expensedate");
 
   //$numberOfTransactions = mysqli_query($con, "SELECT COUNT(*) FROM expenses WHERE user_id = '$userid'");
-  //ßf$numberOfTransactions = mysqli_query($con, "SELECT COUNT(*) FROM expenses");
+  $total_spent = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid'");
 
   $result = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$userid'");
-
-  
+  // convert object to string
   $count = mysqli_num_rows($result);
   
-  echo $count;
-  
+  //access the object colum index 0 or associative key
+  $total_amount = $total_spent->fetch_array()[0] ?? '';
 
 ?>
 
@@ -117,10 +116,10 @@
           <div class="col-md">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title text-center">Stat</h5>
+                <h5 class="card-title text-center">Total Spent $</h5>
               </div>
               <div class="card-body">
-              <h3 class="text-center"> <?php  echo $count; ?></h3>
+              <h3 class="text-center"> <?php  echo $total_amount; ?></h3>
               </div>
             </div>
           </div>
@@ -239,17 +238,6 @@
     
   </div>
   <!-- /#wrapper -->
-<?php
-
-?>  
-<h3>Hello</h3>
-  <h3><?php echo $count; ?></h3>
-  <?php 
-
- 
-?>
-<!-- mysqli_result Object ( [current_field] => 0 [field_count] => 1 [lengths] => [num_rows] => 1 [type] => 0 ) -->
-
 </body>
 
 </html>
