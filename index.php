@@ -124,10 +124,10 @@
           <div class="col-md">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title text-center">Total Spent $</h5>
+                <h5 class="card-title text-center">Total Spent</h5>
               </div>
               <div class="card-body">
-              <h3 class="text-center"> <?php  echo $total_amount; ?></h3>
+              <h3 class="text-center"> <?php  echo "$ ". $total_amount; ?></h3>
               </div>
             </div>
           </div>
@@ -147,10 +147,33 @@
           <div class="col-md">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title text-center">Total Spent last 30 days $</h5>
+                <h5 class="card-title text-center">Total Spent last 30 days</h5>
               </div>
               <div class="card-body">
-              <h3 class="text-center"> <?php  echo $total_spent_last_30_days_output ?></h3>
+              <h3 class="text-center"> <?php  echo "$ ". $total_spent_last_30_days_output ?></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title text-center">Placehlder</h5>
+              </div>
+              <div class="card-body">
+                <h3 class="text-center"> <?php  echo "$ ". "" ?></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title text-center">Placeholder</h5>
+              </div>
+              <div class="card-body">
+              <h3 class="text-center"> <?php  echo "$ ". "" ?></h3>
               </div>
             </div>
           </div>
@@ -184,7 +207,7 @@
           <div class="col-md">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title text-center">STAT</h5>
+                <h5 class="card-title text-center">Placeholder</h5>
               </div>
               <div class="card-body">
                 <canvas id="expense_line" height="150"></canvas>
@@ -194,7 +217,7 @@
           <div class="col-md">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title text-center">STAT</h5>
+                <h5 class="card-title text-center">Placeholder</h5>
               </div>
               <div class="card-body">
                 <canvas id="expense_category_pie" height="150"></canvas>
