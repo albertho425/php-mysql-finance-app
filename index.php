@@ -3,23 +3,25 @@
   $exp_category_dc = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
   $exp_amt_dc = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
 
-  $exp_date_line = mysqli_query($con, "SELECT expensedate FROM expenses WHERE user_id = '$userid' GROUP BY expensedate");
-  $exp_amt_line = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' GROUP BY expensedate");
+  $exp_date_line = mysqli_query($con, "SELECT expensedate FROM expenses WHERE user_id = '$userid' GROUP BY month(expensedate)");
+  $exp_amt_line = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' GROUP BY month(expensedate)");
 
   //$numberOfTransactions = mysqli_query($con, "SELECT COUNT(*) FROM expenses WHERE user_id = '$userid'");
   $total_spent = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid'");
   //access the object colum index 0 or associative key
   $total_amount = $total_spent->fetch_array()[0] ?? '';
 
-  // number o total expense entries for a user
+  // number of total expense entries for a user
   $result = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$userid'");
   // convert object to string
   $count = mysqli_num_rows($result);
   
+  // total spent in last 30 days
   $total_spent_last_30_days = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE expensedate > NOW() - INTERVAL 30 day AND user_id = '$userid'");
   $total_spent_last_30_days_output = $total_spent_last_30_days->fetch_array()[0] ?? '';
 
-  $expenses_last_30_days = mysqli_query($con, "SELECT * from expenses WHERE expensedate > NOW() - INTERVAL 30 day AND user_id = '$userid'");
+ 
+  $expenses_last_30_days = mysqli_query($con, "SELECT COUNT(*) from expenses WHERE expensedate > NOW() - INTERVAL 30 day AND user_id = '$userid'");
   $expenses_last_30_days_output = $expenses_last_30_days->fetch_array()[0] ?? '';
 
 ?>
@@ -158,7 +160,7 @@
           <div class="col-md">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title text-center">Yearly Expenses</h5>
+                <h5 class="card-title text-center">Monthly Expenses</h5>
               </div>
               <div class="card-body">
                 <canvas id="expense_line" height="150"></canvas>
@@ -169,6 +171,30 @@
             <div class="card">
               <div class="card-header">
                 <h5 class="card-title text-center">Expense Category</h5>
+              </div>
+              <div class="card-body">
+                <canvas id="expense_category_pie" height="150"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+
+        <div class="row">
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title text-center">STAT</h5>
+              </div>
+              <div class="card-body">
+                <canvas id="expense_line" height="150"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title text-center">STAT</h5>
               </div>
               <div class="card-body">
                 <canvas id="expense_category_pie" height="150"></canvas>
