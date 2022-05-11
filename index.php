@@ -20,10 +20,15 @@
   $total_spent_last_30_days = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE expensedate > NOW() - INTERVAL 30 day AND user_id = '$userid'");
   $total_spent_last_30_days_output = $total_spent_last_30_days->fetch_array()[0] ?? '';
 
+  $avg_spent_per_month = mysqli_query($con, "SELECT month(expensedate), avg(expense) from expenses group by month(expensedate) AND user_id = '$userid'");
+  //$avg_spent_per_month_output = $avg_spent_per_month->fetch_array()[0] ?? '';
+
+
  
   $expenses_last_30_days = mysqli_query($con, "SELECT COUNT(*) from expenses WHERE expensedate > NOW() - INTERVAL 30 day AND user_id = '$userid'");
   $expenses_last_30_days_output = $expenses_last_30_days->fetch_array()[0] ?? '';
 
+  $placeholder = "0";
 ?>
 
 
@@ -53,9 +58,10 @@
     <!-- Sidebar -->
     <div class="border-right" id="sidebar-wrapper">
       <div class="user">
-        <img class="img img-fluid rounded-circle" src="<?php echo $userprofile ?>" width="120">
-        <h5><?php echo $username ?></h5>
-        <p><?php echo $useremail ?></p>
+        
+        <br>
+        <p><?php echo "Hello " . $username; ?></p>
+        
       </div>
       <div class="sidebar-heading">Management</div>
       <div class="list-group list-group-flush">
@@ -163,7 +169,7 @@
                 <h5 class="card-title text-center">Placehlder</h5>
               </div>
               <div class="card-body">
-                <h3 class="text-center"> <?php  echo "$ ". "" ?></h3>
+                <h3 class="text-center"> <?php echo $placeholder;?></h3>
               </div>
             </div>
           </div>
@@ -173,7 +179,7 @@
                 <h5 class="card-title text-center">Placeholder</h5>
               </div>
               <div class="card-body">
-              <h3 class="text-center"> <?php  echo "$ ". "" ?></h3>
+              <h3 class="text-center"> <?php  echo $placeholder; ?></h3>
               </div>
             </div>
           </div>
@@ -210,7 +216,7 @@
                 <h5 class="card-title text-center">Placeholder</h5>
               </div>
               <div class="card-body">
-                <canvas id="expense_line" height="150"></canvas>
+              <h3 class="text-center"> <?php  echo $placeholder; ?></h3>
               </div>
             </div>
           </div>
@@ -220,7 +226,7 @@
                 <h5 class="card-title text-center">Placeholder</h5>
               </div>
               <div class="card-body">
-                <canvas id="expense_category_pie" height="150"></canvas>
+              <h3 class="text-center"> <?php  echo $placeholder; ?></h3>
               </div>
             </div>
           </div>
@@ -282,7 +288,7 @@
                     echo '"' . $c['expensedate'] . '",';
                   } ?>],
         datasets: [{
-          label: 'Expense by Month (Whole Year)',
+          label: 'Expense by Month',
           data: [<?php while ($d = mysqli_fetch_array($exp_amt_line)) {
                     echo '"' . $d['SUM(expense)'] . '",';
                   } ?>],
