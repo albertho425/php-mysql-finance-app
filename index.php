@@ -55,27 +55,7 @@
 
   <div class="d-flex" id="wrapper">
 
-    <!-- Sidebar -->
-    <div class="border-right" id="sidebar-wrapper">
-      <div class="user">
-        
-        <br>
-        <p><?php echo "Hello " . $username; ?></p>
-        
-      </div>
-      <div class="sidebar-heading">Management</div>
-      <div class="list-group list-group-flush">
-        <a href="index.php" class="list-group-item list-group-item-action sidebar-active"><span data-feather="home"></span> Dashboard</a>
-        <a href="add_expense.php" class="list-group-item list-group-item-action "><span data-feather="plus-square"></span> Add Expenses</a>
-        <a href="manage_expense.php" class="list-group-item list-group-item-action "><span data-feather="dollar-sign"></span>Edit Expenses</a>
-      </div>
-      <div class="sidebar-heading">Settings </div>
-      <div class="list-group list-group-flush">
-        <a href="profile.php" class="list-group-item list-group-item-action "><span data-feather="user"></span> Profile</a>
-        <a href="logout.php" class="list-group-item list-group-item-action "><span data-feather="power"></span> Logout</a>
-      </div>
-    </div>
-    <!-- /#sidebar-wrapper -->
+    <?php display_sidebar();?>
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
