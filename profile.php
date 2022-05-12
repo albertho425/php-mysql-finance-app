@@ -57,19 +57,14 @@ if (isset($_POST['but_upload'])) {
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-        <nav class="navbar navbar-expand-lg navbar-light  border-bottom">
+        <?php display_secondary_nav(); ?>
 
-            <button class="toggler" type="button" id="menu-toggle" aria-expanded="false">
-                <span data-feather="menu"></span>
-            </button>
-
-            </nav>
 
             <div class="container-fluid">
                 <div class="row justify-content-center">
                     <div class="col-md-6">
                     <h3 class="mt-4 text-center">Update Profile</h3>
-                    <hr>
+                
                         <form class="form" method="post" action="" enctype='multipart/form-data'>
                             <div class="text-center mt-3">
                                 <img src="<?php echo $userprofile; ?>" class="text-center img img-fluid rounded-circle avatar" width="120" alt="Profile Picture">

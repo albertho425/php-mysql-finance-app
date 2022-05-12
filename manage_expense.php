@@ -17,11 +17,7 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-        <nav class="navbar navbar-expand-lg navbar-light  border-bottom">
-            <button class="toggler" type="button" id="menu-toggle" aria-expanded="false">
-                <span data-feather="menu"></span>
-            </button>           
-        </nav>
+        <?php display_secondary_nav(); ?>
 
             <div>
                 <h3 class="mt-4 text-center">Edit Expenses</h3>

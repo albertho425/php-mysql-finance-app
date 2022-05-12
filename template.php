@@ -124,5 +124,17 @@ function display_sidebar() {
 
 }
 
+function display_secondary_nav() {
+
+  echo <<<EOT
+    <nav class="navbar navbar-expand-lg navbar-light border-bottom">
+      <button class="toggler" type="button" id="menu-toggle" aria-expanded="false">
+        <span data-feather="menu"></span>
+     </button>           
+    </nav>
+
+  EOT;
+}
+
 ?>
 

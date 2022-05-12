@@ -118,20 +118,14 @@ if (isset($_GET['delete'])) {
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-            <nav class="navbar navbar-expand-lg navbar-light  border-bottom">
+        <?php display_secondary_nav(); ?>
 
 
-                <button class="toggler" type="button" id="menu-toggle" aria-expanded="false">
-                    <span data-feather="menu"></span>
-                </button>
-
-            </nav>
-
-            <div class="container-fluid">
+            <div>
             
                 <h3 class="mt-4 text-center">Add Expenses</h3>
-                <hr>
-                <div class="row ">
+                
+                <div class="row">
 
                     <div class="col-md-3"></div>
 
@@ -217,6 +211,7 @@ if (isset($_GET['delete'])) {
                     <div class="col-md-3"></div>
                     
                 </div>
+                <!-- row -->
             </div>
         </div>
         <!-- /#page-content-wrapper -->
