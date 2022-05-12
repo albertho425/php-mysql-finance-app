@@ -43,8 +43,13 @@
 
     <?php display_sidebar();?>
 
+
+
     <!-- Page Content -->
     <div id="page-content-wrapper">
+
+    <?php display_secondary_nav(); ?>
+
       
       <div class="container-fluid">
         <h3 class="mt-4">Dashboard</h3>
