@@ -21,7 +21,7 @@ if (isset($_POST['email'])) {
 }
 ?>
 
-<?php include "templateHtmlCssJs.php" ?>
+<?php include "template.php" ?>
 <!-- loads HTML template and Bootstrap   -->
 <?php template_header("Login"); ?>
 <!-- loads custom styling -->

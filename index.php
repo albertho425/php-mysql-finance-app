@@ -32,24 +32,10 @@
 ?>
 
 
-<?php include "templateHtmlCssJs.php" ?>
+<?php include "template.php" ?>
 <?php template_header("Home Page");?>
 <?php display_header();?>
-
-
-  <style>
-    .card a {
-      color: #000;
-      font-weight: 500;
-    }
-
-    .card a:hover {
-      color: #28a745;
-      text-decoration: dotted;
-    }
-  </style>
-
-<!-- </head> -->
+<style><?php include 'css/style.css'; ?></style>
 
 <body>
 

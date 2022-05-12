@@ -20,7 +20,7 @@ if (isset($_REQUEST['firstname'])) {
     $query = "INSERT into `users` (firstname, lastname, password, email, trn_date) VALUES ('$firstname','$lastname', '" . md5($password) . "', '$email', '$trn_date')";
     $result = mysqli_query($con, $query);
     if ($result) {
-      header("Location: login.php");
+      header("Location: index.php");
     }
   } else {
     echo ("ERROR: Please Check Your Password & Confirmation password");
@@ -28,7 +28,7 @@ if (isset($_REQUEST['firstname'])) {
 }
 ?>
 
-<?php include "templateHtmlCssJs.php" ?>
+<?php include "template.php" ?>
 <?php template_header("Register");?>
 <!-- loads custom styling -->
 <link href="css/signup.css" rel="stylesheet">
@@ -60,7 +60,7 @@ if (isset($_REQUEST['firstname'])) {
       </div>
       <div class="form-group">
         <a class="btn btn-md btn-light" href="http://localhost:8888/Finance/login.php">Cancel</a>
-        <button type="submit" class="btn btn-success btn-md" style="border-radius:0%;">Register</button>
+        <button type="submit" class="btn btn-success btn-md">Register</button>
       </div>
     </form>
     <div class="text-center">Already have an account? <a class="text-success" href="login.php">Login Here</a></div>
