@@ -18,21 +18,16 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
         <div id="page-content-wrapper">
 
         <nav class="navbar navbar-expand-lg navbar-light  border-bottom">
-
-
             <button class="toggler" type="button" id="menu-toggle" aria-expanded="false">
                 <span data-feather="menu"></span>
-            </button>
+            </button>           
+        </nav>
 
-            
-            </nav>
-
-            <div class="container-fluid">
+            <div>
                 <h3 class="mt-4 text-center">Edit Expenses</h3>
-                <hr>
                 <div class="row justify-content-center">
 
-                    <div class="col-md-6">
+                    <div class="mt-4 col-md-6">
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr class="text-center">
@@ -70,7 +65,7 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
                     </div>
             
                 </div>
-            </div>
+            <!-- </div> -->
 
 
    
