@@ -31,6 +31,9 @@ if (isset($_POST['add'])) {
     if ($result) {
         echo "Record successfully added";
     }
+    else {
+        echo "Error in adding expense";
+    }
 
     header('location: add_expense.php');
 }
@@ -201,7 +204,7 @@ if (isset($_GET['delete'])) {
                                         <button class="btn btn-md btn-danger" type="submit" name="delete">Delete</button>
                                     <?php else : ?>
                                         <a class="btn btn-md btn-light" href="http://localhost:8888/Finance/index.php">Cancel</a>
-                                        <button class="btn btn-md btn-success" type="submit" name="delete">Add</button>
+                                        <button class="btn btn-md btn-success" type="submit" name="add">Add</button>
                                     <?php endif ?>
                                 </div>
                             </div>
