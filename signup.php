@@ -15,9 +15,9 @@ if (isset($_REQUEST['firstname'])) {
     $password = mysqli_real_escape_string($con, $password);
 
 
-    $trn_date = date("Y-m-d H:i:s");
+    
 
-    $query = "INSERT into `users` (firstname, lastname, password, email, trn_date) VALUES ('$firstname','$lastname', '" . md5($password) . "', '$email', '$trn_date')";
+    $query = "INSERT into `users` (firstname, lastname, password, email) VALUES ('$firstname','$lastname', '" . md5($password) . "', '$email')";
     $result = mysqli_query($con, $query);
     if ($result) {
       header("Location: index.php");
