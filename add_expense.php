@@ -22,7 +22,7 @@ if (isset($_POST['add'])) {
     $expenseamount = $_POST['expenseamount'];
     $expensedate = $_POST['expensedate'];
     $expensecategory = $_POST['expensecategory'];
-    $expensename = $_POST['expensename'];
+    $expensename = trim($_POST['expensename']);
     $expensenote = trim($_POST['expensenote']);
 
     $expenses = "INSERT INTO expenses (user_id, expense,expensedate,expensecategory,expensename,expensenote) VALUES ('$userid', '$expenseamount','$expensedate','$expensecategory','$expensename','$expensenote')";
@@ -61,7 +61,7 @@ if (isset($_POST['update'])) {
     $expenseamount = $_POST['expenseamount'];
     $expensedate = $_POST['expensedate'];
     $expensecategory = $_POST['expensecategory'];
-    $expensename = $_POST['expensename'];
+    $expensename = trim($_POST['expensename']);
     $expensenote = trim($_POST['expensenote']);
 
     $sql = "UPDATE expenses SET expense='$expenseamount', expensedate='$expensedate', expensecategory='$expensecategory', expensename='$expensename', expensenote = '$expensenote' WHERE user_id='$userid' AND expense_id='$id'";
@@ -103,7 +103,7 @@ if (isset($_POST['delete'])) {
     $expensedate = $_POST['expensedate'];
     $expensecategory = $_POST['expensecategory'];
     $expensename = $_POST['expensename'];
-    $expensenote = trim($_POST['expensenote']);
+    $expensenote = $_POST['expensenote'];
 
 
     $sql = "DELETE FROM expenses WHERE user_id='$userid' AND expense_id='$id'";
@@ -151,7 +151,7 @@ if (isset($_POST['delete'])) {
                             <div class="form-group row">
                                 <label for="expensename" class="col-sm-6 col-form-label"><b>Name</b></label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control col-sm-12" value="<?php echo $expensename;  ?>" id="expensename" name="expensename">
+                                    <input type="text" class="form-control col-sm-12" value="<?php echo $expensename;  ?>" id="expensename" name="expensename" required>
                                 </div>
                             </div>
                             <div class="form-group row">
