@@ -28,10 +28,6 @@ echo <<<EOT
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
 
-
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
-
     <!-- Feather JS for Icons -->
     <script src="js/feather.min.js"></script>
 
