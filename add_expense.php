@@ -38,6 +38,24 @@ if (isset($_POST['add'])) {
     header('location: add_expense.php');
 }
 
+// When a user clicks on edit, the code below runs to load the current expenses into the form
+if (isset($_GET['edit'])) {
+    $id = $_GET['edit'];
+    $update = true;
+    $record = mysqli_query($con, "SELECT * FROM expenses WHERE user_id='$userid' AND expense_id=$id");
+    if (mysqli_num_rows($record) == 1) {
+        $n = mysqli_fetch_array($record);
+        $expenseamount = $n['expense'];
+        $expensedate = $n['expensedate'];
+        $expensecategory = $n['expensecategory'];
+        $expensename = $n['expensename'];
+        $expensenote = $n['expensenote'];
+    } else {
+        echo ("WARNING: AUTHORIZATION ERROR: Trying to Access Unauthorized data");
+    }
+}
+
+// To actually edit the values, the user clicks on update to update the values into the database
 if (isset($_POST['update'])) {
     $id = $_GET['edit'];
     $expenseamount = $_POST['expenseamount'];
@@ -46,7 +64,10 @@ if (isset($_POST['update'])) {
     $expensename = $_POST['expensename'];
     $expensenote = trim($_POST['expensenote']);
 
-    $sql = "UPDATE expenses SET expense='$expenseamount', expensedate='$expensedate', expensecategory='$expensecategory', expensename='$expensename' expensenote='$expensenote' WHERE user_id='$userid' AND expense_id='$id'";
+    $sql = "UPDATE expenses SET expense='$expenseamount', expensedate='$expensedate', expensecategory='$expensecategory', expensename='$expensename', expensenote = '$expensenote' WHERE user_id='$userid' AND expense_id='$id'";
+
+    // $sql = "UPDATE `expenses` SET `expense` = '210', `expensenote` = 'Filet Meal and 10 Flurry' WHERE `expenses`.`expense_id` = 92";
+
     if (mysqli_query($con, $sql)) {
         echo "Records were updated successfully.";
     } else {
@@ -54,6 +75,27 @@ if (isset($_POST['update'])) {
     }
     header('location: manage_expense.php');
 }
+
+// When a user clicks on delete, the values of the expense to be deleted are first loaded into a form
+
+if (isset($_GET['delete'])) {
+    $id = $_GET['delete'];
+    $del = true;
+    $record = mysqli_query($con, "SELECT * FROM expenses WHERE user_id='$userid' AND expense_id=$id");
+
+    if (mysqli_num_rows($record) == 1) {
+        $n = mysqli_fetch_array($record);
+        $expenseamount = $n['expense'];
+        $expensedate = $n['expensedate'];
+        $expensecategory = $n['expensecategory'];
+        $expensename = $n['expensename'];
+        $expensenote = $n['expensenote'];
+    } else {
+        echo ("WARNING: AUTHORIZATION ERROR: Trying to Access Unauthorized data");
+    }
+}
+
+// After loading the values of expense to be deleted, the deletion occurs and user is directed back to the edit page
 
 if (isset($_POST['delete'])) {
     $id = $_GET['delete'];
@@ -73,38 +115,9 @@ if (isset($_POST['delete'])) {
     header('location: manage_expense.php');
 }
 
-if (isset($_GET['edit'])) {
-    $id = $_GET['edit'];
-    $update = true;
-    $record = mysqli_query($con, "SELECT * FROM expenses WHERE user_id='$userid' AND expense_id=$id");
-    if (mysqli_num_rows($record) == 1) {
-        $n = mysqli_fetch_array($record);
-        $expenseamount = $n['expense'];
-        $expensedate = $n['expensedate'];
-        $expensecategory = $n['expensecategory'];
-        $expensename = $n['expensename'];
-        $expensenote = $n['expensenote'];
-    } else {
-        echo ("WARNING: AUTHORIZATION ERROR: Trying to Access Unauthorized data");
-    }
-}
 
-if (isset($_GET['delete'])) {
-    $id = $_GET['delete'];
-    $del = true;
-    $record = mysqli_query($con, "SELECT * FROM expenses WHERE user_id='$userid' AND expense_id=$id");
 
-    if (mysqli_num_rows($record) == 1) {
-        $n = mysqli_fetch_array($record);
-        $expenseamount = $n['expense'];
-        $expensedate = $n['expensedate'];
-        $expensecategory = $n['expensecategory'];
-        $expensename = $n['expensename'];
-        $expensenote = $n['expensenote'];
-    } else {
-        echo ("WARNING: AUTHORIZATION ERROR: Trying to Access Unauthorized data");
-    }
-}
+
 ?>
 
 <?php include "template.php" ?>
@@ -123,16 +136,11 @@ if (isset($_GET['delete'])) {
 
         <?php display_secondary_nav(); ?>
 
-
-            <div>
-            
+            <div>            
                 <h3 class="mt-4 text-center">Add Expenses</h3>
-                
                 <div class="row">
-
                     <div class="col-md-3"></div>
-
-                    <div class="col-md" style="margin:0 auto;">
+                    <div class="col-md" >
                         <form action="" method="POST">
                             <div class="form-group row">
                                 <label for="expenseamount" class="col-sm-6 col-form-label"><b>Cost</b></label>
@@ -182,17 +190,11 @@ if (isset($_GET['delete'])) {
                              <div class="form-group row">
                                 <label for="expensenote" class="col-sm-6 col-form-label"><b>Note</b></label>
                                 <div class="col-md-6">
-                                
-                                    <!-- <input type="text" class="form-control col-sm-12" value="<?php //echo $expensenote;  ?>" id="expensenote" name="expensenote"> -->
-
-                                    <!-- Note textarea will submit to database, edit a record in database, but will not output from database to textarea.  using input type="text" works normally.  come back to this later. -->
-                                    
-                                    <textarea type="text" class="form-control" name="expensenote" rows="3" value="<?php echo $expensenote;?>"></textarea>
-                                    
+                                    <input type="text" class="form-control col-sm-12" value="<?php echo $expensenote;  ?>" id="expensenote" name="expensenote">
                                 </div>
                             </div>
                             
-                            <!-- Display buttun for cancel, add, edit and delete -->
+                            <!-- Display the correct button color for Update, Delete, or Add. A cancel button is added to Update, Delete, or Add. -->
 
                             <div class="form-group row">
                                 <div class="col-md-12 text-right">
