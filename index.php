@@ -1,11 +1,16 @@
 <?php
   include("session.php");
+  // Sum of expenses per category for all time
   $exp_category_dc = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
   $exp_amt_dc = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
 
-  $exp_date_line = mysqli_query($con, "SELECT expensedate FROM expenses WHERE user_id = '$userid' GROUP BY month(expensedate)");
-  $exp_amt_line = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' GROUP BY month(expensedate)");
+  // Sum of expeneses per category for the last 30 days (does not work)
+  // $exp_category_dc = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' AND expensedate > NOW() - INTERVAL 30 GROUP BY expensecategory");
+  // $exp_amt_dc = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' AND expensedate > NOW() - INTERVAL 30 GROUP BY expensecategory");
 
+  $exp_date_line = mysqli_query($con, "SELECT expensedate FROM expenses WHERE user_id = '$userid' GROUP BY expensedate");
+  $exp_amt_line = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' GROUP BY expensedate");
+  
   //$numberOfTransactions = mysqli_query($con, "SELECT COUNT(*) FROM expenses WHERE user_id = '$userid'");
   $total_spent = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid'");
   //access the object colum index 0 or associative key
@@ -22,6 +27,8 @@
 
   $avg_spent_per_month = mysqli_query($con, "SELECT month(expensedate), avg(expense) from expenses group by month(expensedate) AND user_id = '$userid'");
   //$avg_spent_per_month_output = $avg_spent_per_month->fetch_array()[0] ?? '';
+
+  $testQuery = mysqli_query($con, "SELECT year(expensedate), month(expensedate), sum(expense) FROM expenses WHERE user_id = 7 GROUP BY year(expensedate), month(expensedate)");
 
 
  
@@ -197,14 +204,20 @@
                 <h5 class="card-title text-center">Placeholder</h5>
               </div>
               <div class="card-body">
-              <h3 class="text-center"> <?php  echo $placeholder; ?></h3>
+              <h3 class="text-center"> </h3>
               </div>
             </div>
           </div>
         </div>
        
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
 
+  </div>
+  <!-- /#wrapper -->
 
+  <?php  print_r($testQuery); ?>
       
   <!-- Bootstrap core JavaScript -->
   <script src="js/jquery.slim.min.js"></script>
@@ -284,15 +297,27 @@
       }
     });
   </script>
+<?php
+// $mysqli = new mysqli("localhost","root","root","dailyexpense");
+
+// if ($mysqli -> connect_errno) {
+//   echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+//   exit();
+// }
+
+// $sql = "SELECT month(expensedate), sum(expense) FROM expenses WHERE user_id = 7 GROUP BY month(expensedate)";
 
 
-</div>
-    </div>
-    <!-- /#page-content-wrapper -->
+// if ($result = $mysqli -> query($sql)) {
+//   while ($obj = $result -> fetch_object()) {
+//     printf("%s (%s)\n", $obj->expensedate, $obj->expense);
+//   }
+//   $result -> free_result();
+// }
 
-    
-  </div>
-  <!-- /#wrapper -->
+// $mysqli -> close();
+
+?>
 </body>
 
 </html>
