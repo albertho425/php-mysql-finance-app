@@ -1,8 +1,13 @@
 <?php
   include("session.php");
-  // Sum of expenses per category for all time
+  // Sum of expenses per category for all time. Used for bar chart
   $exp_category_dc = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
   $exp_amt_dc = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
+
+  // Sum of expenses per category for all time. Used for pie chart
+  $exp_category_dc2 = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
+  $exp_amt_dc2 = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
+
 
   // Sum of expeneses per category for the last 30 days (does not work)
   // $exp_category_dc = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' AND expensedate > NOW() - INTERVAL 30 GROUP BY expensecategory");
@@ -98,6 +103,57 @@
           <div class="col-md">
             <div class="card">
               <div class="card-header">
+                <h5 class="card-title text-center">All-time spending by category</h5>
+              </div>
+              <div class="card-body">
+                <canvas id="expense_category_pie2" height="150"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title text-center">All-time spending by category</h5>
+              </div>
+              <div class="card-body">
+                <canvas id="expense_category_pie" height="150"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+
+          <div class="row">
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title text-center">Monthly Expenses</h5>
+              </div>
+              <div class="card-body">
+                <canvas id="expense_line" height="150"></canvas>
+              </div>
+            </div>
+          </div>
+        
+
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title text-center">Placeholder</h5>
+              </div>
+              <div class="card-body">
+              <h3 class="text-center"> </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+     
+
+        <div class="row">
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
                 <h5 class="card-title text-center">Total Transactions</h5>
               </div>
               <div class="card-body">
@@ -163,52 +219,6 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-md">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="card-title text-center">Monthly Expenses</h5>
-              </div>
-              <div class="card-body">
-                <canvas id="expense_line" height="150"></canvas>
-              </div>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="card-title text-center">Expense Category</h5>
-              </div>
-              <div class="card-body">
-                <canvas id="expense_category_pie" height="150"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-       
-
-        <div class="row">
-          <div class="col-md">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="card-title text-center">Placeholder</h5>
-              </div>
-              <div class="card-body">
-              <h3 class="text-center"> <?php  echo $placeholder; ?></h3>
-              </div>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="card-title text-center">Placeholder</h5>
-              </div>
-              <div class="card-body">
-              <h3 class="text-center"> </h3>
-              </div>
-            </div>
-          </div>
-        </div>
        
         </div>
     </div>
@@ -235,6 +245,9 @@
     feather.replace()
   </script>
   <script>
+
+    // Bar Chart
+
     var ctx = document.getElementById('expense_category_pie').getContext('2d');
     var myChart = new Chart(ctx, {
       type: 'bar',
@@ -248,21 +261,23 @@
                     echo '"' . $b['SUM(expense)'] . '",';
                   } ?>],
           backgroundColor: [
-            '#6f42c1',
-            '#dc3545',
-            '#28a745',
-            '#007bff',
-            '#ffc107',
-            '#20c997',
-            '#17a2b8',
-            '#fd7e14',
-            '#e83e8c',
-            '#6610f2'
+            '#154360',
+            '#1E8449',
+            '#DAF7A6',
+            '#FFC300',
+            '#FF5733',
+            '#C70039',
+            '#ABB2B9',
+            '#5B2C6F',
+            '#F4F6F7',
+            '#566573'
           ],
           borderWidth: 1
         }]
       }
     });
+
+    // Line Chart
 
     var line = document.getElementById('expense_line').getContext('2d');
     var myChart = new Chart(line, {
@@ -280,22 +295,56 @@
             '#adb5bd'
           ],
           backgroundColor: [
-            '#6f42c1',
-            '#dc3545',
-            '#28a745',
-            '#007bff',
-            '#ffc107',
-            '#20c997',
-            '#17a2b8',
-            '#fd7e14',
-            '#e83e8c',
-            '#6610f2'
+            '#154360',
+            '#1E8449',
+            '#DAF7A6',
+            '#FFC300',
+            '#FF5733',
+            '#C70039',
+            '#ABB2B9',
+            '#5B2C6F',
+            '#F4F6F7',
+            '#566573'
           ],
           fill: false,
           borderWidth: 2
         }]
       }
     });
+
+    
+    // Pie Chart
+
+    var ctx = document.getElementById('expense_category_pie2').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: [<?php while ($a = mysqli_fetch_array($exp_category_dc2)) {
+                    echo '"' . $a['expensecategory'] . '",';
+                  } ?>],
+        datasets: [{
+          label: 'Expense by Category',
+          data: [<?php while ($b = mysqli_fetch_array($exp_amt_dc2)) {
+                    echo '"' . $b['SUM(expense)'] . '",';
+                  } ?>],
+          backgroundColor: [
+            '#154360',
+            '#1E8449',
+            '#DAF7A6',
+            '#FFC300',
+            '#FF5733',
+            '#C70039',
+            '#ABB2B9',
+            '#5B2C6F',
+            '#F4F6F7',
+            '#566573'
+          ],
+          borderWidth: 1
+        }]
+      }
+    });
+
+   
   </script>
 <?php
 // $mysqli = new mysqli("localhost","root","root","dailyexpense");
