@@ -8,6 +8,10 @@
   $exp_category_dc2 = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
   $exp_amt_dc2 = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
 
+  // TBA
+  $exp_category_dc3 = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
+  $exp_amt_dc3 = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
+
 
   // Sum of expeneses per category for the last 30 days (does not work)
   // $exp_category_dc = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' AND expensedate > NOW() - INTERVAL 30 GROUP BY expensecategory");
@@ -143,7 +147,7 @@
                 <h5 class="card-title text-center">Placeholder</h5>
               </div>
               <div class="card-body">
-              <h3 class="text-center"> </h3>
+                <canvas id="expense_category_pie4" height="150"></canvas>
               </div>
             </div>
           </div>
@@ -203,7 +207,7 @@
                 <h5 class="card-title text-center">Placehlder</h5>
               </div>
               <div class="card-body">
-                <h3 class="text-center"> <?php echo $placeholder;?></h3>
+              <canvas id="expense_category_pie3" height="150"></canvas>
               </div>
             </div>
           </div>
@@ -345,26 +349,72 @@
     });
 
    
+    //Replace dynamic labels and data with hard code ones following ChartJS example
+    var ctx = document.getElementById('expense_category_pie4').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June',
+        ],
+        datasets: [{
+          label: 'My First dataset',
+          data: [0, 10, 5, 2, 20, 30, 45],
+          backgroundColor: [
+            '#154360',
+            '#1E8449',
+            '#DAF7A6',
+            '#FFC300',
+            '#FF5733',
+            '#C70039',
+            '#ABB2B9',
+            '#5B2C6F',
+            '#F4F6F7',
+            '#566573'
+          ],
+          borderWidth: 1
+        }]
+      }
+    });
+
+
+ // Doughnut Chart with real date
+
+ var ctx = document.getElementById('expense_category_pie3').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: [<?php while ($a = mysqli_fetch_array($exp_category_dc3)) {
+                    echo '"' . $a['expensecategory'] . '",';
+                  } ?>],
+        datasets: [{
+          label: 'Expense by Category',
+          data: [<?php while ($b = mysqli_fetch_array($exp_amt_dc3)) {
+                    echo '"' . $b['SUM(expense)'] . '",';
+                  } ?>],
+          backgroundColor: [
+            '#154360',
+            '#1E8449',
+            '#DAF7A6',
+            '#FFC300',
+            '#FF5733',
+            '#C70039',
+            '#ABB2B9',
+            '#5B2C6F',
+            '#F4F6F7',
+            '#566573'
+          ],
+          borderWidth: 1
+        }]
+      }
+    });
+   
   </script>
 <?php
-// $mysqli = new mysqli("localhost","root","root","dailyexpense");
-
-// if ($mysqli -> connect_errno) {
-//   echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
-//   exit();
-// }
-
-// $sql = "SELECT month(expensedate), sum(expense) FROM expenses WHERE user_id = 7 GROUP BY month(expensedate)";
-
-
-// if ($result = $mysqli -> query($sql)) {
-//   while ($obj = $result -> fetch_object()) {
-//     printf("%s (%s)\n", $obj->expensedate, $obj->expense);
-//   }
-//   $result -> free_result();
-// }
-
-// $mysqli -> close();
 
 ?>
 </body>
