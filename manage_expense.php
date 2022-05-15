@@ -59,24 +59,14 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
                             <?php $count++; } ?>
                         </table>
                     </div>
-            
+
                 </div>
             <!-- </div> -->
-
-
-   
-
-            
+        </div>
+    </div>
+    <!-- page content wrapper -->
 
     </div>
-    <!-- /#page-content-wrapper -->
-
-    
-
-    </div>
-    <!-- /#wrapper -->
-
-
     <!-- Bootstrap core JavaScript -->
     <script src="js/jquery.slim.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -94,6 +84,7 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
 
 
 
+<?php display_footer();?>
 
 </body>
 

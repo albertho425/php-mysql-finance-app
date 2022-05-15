@@ -414,9 +414,8 @@
     });
    
   </script>
-<?php
+<?php display_footer();?>
 
-?>
 </body>
 
 </html>
