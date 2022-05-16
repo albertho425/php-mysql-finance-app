@@ -58,6 +58,8 @@ if (isset($_POST['but_upload'])) {
         <div id="page-content-wrapper">
 
         <?php display_secondary_nav(); ?>
+        <?php display_dashboard_buttons(); ?>
+
 
 
             <div class="container-fluid">

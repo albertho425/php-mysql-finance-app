@@ -18,9 +18,13 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
         <div id="page-content-wrapper">
 
         <?php display_secondary_nav(); ?>
+        <?php display_dashboard_buttons(); ?>
+
 
             <div>
                 <h3 class="mt-4 text-center">Edit Expenses</h3>
+
+       
                 <div class="row justify-content-center">
 
                     <div class="mt-4 col-md-6">

@@ -136,6 +136,9 @@ if (isset($_POST['delete'])) {
 
         <?php display_secondary_nav(); ?>
 
+        <?php display_dashboard_buttons(); ?>
+
+
             <div>            
                 <h3 class="mt-4 text-center">Add Expenses</h3>
                 <div class="row">

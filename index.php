@@ -69,38 +69,9 @@
       
       <div class="container-fluid">
         <h3 class="mt-4">Dashboard</h3>
-        <div class="row">
-          <div class="col-md">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col text-center">
-                    <a href="add_expense.php"><img src="icon/money-3.png" width="57px" />
-                      <p>Add Expenses</p>
-                    </a>
-                  </div>
-                  
-                  <div class="col text-center">
-                    <a href="manage_expense.php"><img src="icon/money-2.png" width="57px" />
-                      <p>Edit Expenses</p>
-                    </a>
-                  </div>
-                  <div class="col text-center">
-                    <a href="profile.php"><img src="icon/user.png" width="57px" />
-                      <p>User Profile</p>
-                    </a>
-                  </div>
-                  <div class="col text-center">
-                    <a href="logout.php"><img src="icon/logout.png" width="57px" />
-                      <p>Logout</p>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
+        <?php display_dashboard_buttons(); ?>
+       
         <h4 class="mt-4">Statistics</h4>
 
         <div class="row">
