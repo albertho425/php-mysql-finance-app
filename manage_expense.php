@@ -4,6 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 include("session.php");
 $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$userid'");
+ 
 ?>
 
 <?php include "template.php" ?>
@@ -40,12 +41,6 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
                                 </tr>
                             </thead>
 
-                            
-                            <?php
-
-                            
-                            ?>
-
                             <?php $count=1; while ($row = mysqli_fetch_array($exp_fetched)) { ?>
                                 <tr>
                                     <td><?php echo $count;?></td>
@@ -54,7 +49,7 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
                                     <td><?php echo $row['expensecategory']; ?></td>
                                     <td><?php echo $row['expensename']; ?></td>
                                     <td class="text-center">
-                                        <a href="add_expense.php?edit=<?php echo $row['expense_id']; ?>" class="btn btn-primary btn-sm">Edit</a>
+                                        <a href="add_expense.php?edit=<?php echo $row['expense_id']; ?>" class="btn btn-warning btn-sm">Edit</a>
                                     </td>
                                     <td class="text-center">
                                         <a href="add_expense.php?delete=<?php echo $row['expense_id']; ?>" class="btn btn-danger btn-sm">Delete</a>
@@ -72,6 +67,9 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
 
     </div>
     <!-- Bootstrap core JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <script src="js/jquery.slim.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/Chart.min.js"></script>
