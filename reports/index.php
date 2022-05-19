@@ -49,7 +49,7 @@
 
 
 <?php include "../template.php" ?>
-<?php template_header("Report Page");?>
+<?php html_template("Report Page");?>
 <?php display_header();?>
 <style><?php include '../../css/style.css'; ?></style>
 
@@ -57,7 +57,7 @@
 
   <div class="d-flex" id="wrapper">
 
-    <?php //display_sidebar();?>
+    <?php display_sidebar();?>
 
 
 
@@ -69,36 +69,7 @@
       
       <div class="container-fluid">
         <h3 class="mt-4">Dashboard</h3>
-        <div class="row">
-          <div class="col-md">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col text-center">
-                    <a href="add_expense.php"><img src="icon/money-3.png" width="57px" />
-                      <p>Add Expenses</p>
-                    </a>
-                  </div>
-                  
-                  <div class="col text-center">
-                    <a href="manage_expense.php"><img src="icon/money-2.png" width="57px" />
-                      <p>Edit Expenses</p>
-                    </a>
-                  </div>
-                  <div class="col text-center">
-                    <a href="profile.php"><img src="icon/user.png" width="57px" />
-                      <p>User Profile</p>
-                    </a>
-                  </div>
-                  <div class="col text-center">
-                    <a href="logout.php"><img src="icon/logout.png" width="57px" />
-                      <p>Logout</p>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <?php display_reports_dashboard_buttons(); ?>
         </div>
 
         <h4 class="mt-4">Statistics</h4>
@@ -234,9 +205,9 @@
   <?php  print_r($testQuery); ?>
       
   <!-- Bootstrap core JavaScript -->
-  <script src="js/jquery.slim.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/Chart.min.js"></script>
+  <script src="../js/jquery.slim.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/Chart.min.js"></script>
   <!-- Menu Toggle Script -->
   <script>
     $("#menu-toggle").click(function(e) {
@@ -418,27 +389,8 @@
 
 </body>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
-
-    <!-- Feather JS for Icons -->
-    <script src="js/feather.min.js"></script>
-
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 
 </head>
-<?php echo dirname(__FILE__); ?>
-
 </html>
