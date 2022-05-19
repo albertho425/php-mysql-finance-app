@@ -34,6 +34,10 @@ echo <<<EOT
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+
 
 
 </head>
@@ -67,6 +71,10 @@ function html_template($title) {
   
       <!-- jQuery -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+      <!-- Popper JS -->
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
   
   
   
@@ -115,6 +123,20 @@ function display_header() {
         <a class="nav-item nav-link" href="http://localhost:8888/Finance/add_expense.php">Add an expense</a>
         <a class="nav-item nav-link" href="http://localhost:8888/Finance/manage_expense.php">Edit an expense</a>
         <a class="nav-item nav-link" href="http://localhost:8888/Finance/search.php">Search expense</a>
+        
+          <li style="list-style-type: none;" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Reports 
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-30-days.php">Last 30 Days</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      
+
         <a class="nav-item nav-link" href="http://localhost:8888/Finance/profile.php">Profile</a>
         <a class="nav-item nav-link" href="http://localhost:8888/Finance/logout.php">Logout</a>
         <a class="nav-item nav-link" href="http://localhost:8888/Finance/login.php">Login</a>
@@ -127,6 +149,9 @@ function display_header() {
       </button>
     </nav>
   </div>
+
+
+  </nav>
 
   EOT;
 }
