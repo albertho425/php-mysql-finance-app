@@ -156,6 +156,31 @@ function display_sidebar() {
 
 }
 
+function display_reports_sidebar() {
+
+
+  echo <<<EOT
+  <!-- Sidebar -->
+        <div class="border-right" id="sidebar-wrapper">
+           
+            <div class="sidebar-heading">Management</div>
+            <div class="list-group list-group-flush">
+              <a href="../index.php" class="list-group-item list-group-item-action sidebar-active"><span data-feather="home"></span> Dashboard</a>
+              <a href="../add_expense.php" class="list-group-item list-group-item-action "><span data-feather="plus-square"></span> Add Expenses</a>
+              <a href="manage_expense.php" class="list-group-item list-group-item-action "><span data-feather="dollar-sign"></span>Edit Expenses</a>
+            </div>
+            <div class="sidebar-heading">Settings </div>
+            <div class="list-group list-group-flush">
+              <a href="../profile.php" class="list-group-item list-group-item-action "><span data-feather="user"></span> Profile</a>
+              <a href="../logout.php" class="list-group-item list-group-item-action "><span data-feather="power"></span> Logout</a>
+            </div>
+          </div>
+  <!-- /#sidebar-wrapper -->
+
+  EOT;
+
+}
+
 function display_secondary_nav() {
 
   echo <<<EOT
@@ -218,13 +243,13 @@ function display_reports_dashboard_buttons() {
               <div class="card-body">
                 <div class="row">
                   <div class="col text-center">
-                    <a href="add_expense.php"><img src="../icon/money-3.png" width="57px" />
+                    <a href="../add_expense.php"><img src="../icon/money-3.png" width="57px" />
                       <p>Add Expenses</p>
                     </a>
                   </div>
                   
                   <div class="col text-center">
-                    <a href="manage_expense.php"><img src="../icon/money-2.png" width="57px" />
+                    <a href="../manage_expense.php"><img src="../icon/money-2.png" width="57px" />
                       <p>Edit Expenses</p>
                     </a>
                   </div>
@@ -234,7 +259,7 @@ function display_reports_dashboard_buttons() {
                     </a>
                   </div>
                   <div class="col text-center">
-                    <a href="logout.php"><img src="../icon/logout.png" width="57px" />
+                    <a href="../logout.php"><img src="../icon/logout.png" width="57px" />
                       <p>Logout</p>
                     </a>
                   </div>

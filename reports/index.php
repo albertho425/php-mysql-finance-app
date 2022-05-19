@@ -57,7 +57,7 @@
 
   <div class="d-flex" id="wrapper">
 
-    <?php display_sidebar();?>
+    <?php display_reports_sidebar();?>
 
 
 
