@@ -350,7 +350,18 @@ function load_reports_scripts() {
     <script src="../js/jquery.slim.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/Chart.min.js"></script>
-
+    
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+    <!-- All elements that have a data-feather attribute will be replaced with SVG markup corresponding to their data-feather attribute value. -->
+    <script>
+    feather.replace()
+    </script>
   EOT;
   
 }
