@@ -2,6 +2,21 @@
   include("../session.php");
   
 
+  //Average amount spent for last 30 days 
+  //SELECT AVG(expense) FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH)
+  //min
+  //max
+ 
+  // SELECT SUM(expense), expensename FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY expensename
+
+  // SELECT SUM(expense), expensecategory FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY expensecategory
+
+  // SELECT SUM(expense), expensedate FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY expensedate
+
+  // SELECT COUNT(expense), expensecategory FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY expensecategory
+
+  // SELECT COUNT(expense) AS 'Times', expensecategory FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY expensecategory
+
 
   // Bar chart for last 30 days
   $exp_category_dc = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' AND expensedate >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY expensecategory");
@@ -32,7 +47,7 @@
 
 
 <?php include "../template.php" ?>
-<?php html_template("Report Page");?>
+<?php html_template("Last 30 Days");?>
 <?php display_header();?>
 <style><?php include '../../css/style.css'; ?></style>
 
@@ -154,9 +169,8 @@
   <!-- /#wrapper -->
       
   <!-- Bootstrap core JavaScript -->
-  <script src="../js/jquery.slim.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/Chart.min.js"></script>
+<?php load_reports_scripts(); ?>
+  
   <!-- Menu Toggle Script -->
   <script>
     $("#menu-toggle").click(function(e) {
