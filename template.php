@@ -44,6 +44,14 @@ echo <<<EOT
 EOT;
 }
 
+/**
+ *  Load HTML, Header Nav Bar, CSS, and JS and output the title of the page for reports pages
+ *
+ * @param [type] $title
+ * @return void
+ */
+
+
 function html_template($title) {
 
   echo <<<EOT
@@ -81,6 +89,7 @@ function html_template($title) {
   </head>
   EOT;
   }
+
 /**
  * Removes whitespace, backslashes, and concerts some predefined characters to HTML
  *
@@ -112,6 +121,10 @@ function display_footer() {
 
 }
 
+/**
+ *  Display the header navigation bar
+ */
+
 function display_header() {
   
   echo <<<EOT
@@ -129,7 +142,12 @@ function display_header() {
             Reports 
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-30-days.php">Last 7 Days</a>
             <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-30-days.php">Last 30 Days</a>
+            <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-30-days.php">This Year</a>
+            <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-30-days.php">All time</a>
+            
+            
             <a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a>
@@ -156,6 +174,10 @@ function display_header() {
   EOT;
 }
 
+/**
+ *  Displays a column of icons on the sidebar for home page/add/edit/profile/logout 
+ */
+
 function display_sidebar() {
 
 
@@ -168,6 +190,7 @@ function display_sidebar() {
               <a href="index.php" class="list-group-item list-group-item-action sidebar-active"><span data-feather="home"></span> Dashboard</a>
               <a href="add_expense.php" class="list-group-item list-group-item-action "><span data-feather="plus-square"></span> Add Expenses</a>
               <a href="manage_expense.php" class="list-group-item list-group-item-action "><span data-feather="dollar-sign"></span>Edit Expenses</a>
+              <a href="reports/last-30-days.php" class="list-group-item list-group-item-action "><span data-feather="dollar-sign"></span>Report - Last 30 Days</a>
             </div>
             <div class="sidebar-heading">Settings </div>
             <div class="list-group list-group-flush">
@@ -180,6 +203,10 @@ function display_sidebar() {
   EOT;
 
 }
+
+/**
+ *  Displays a column of icons on the sidebar for home page/add/edit/profile/logout for reports pages
+ */
 
 function display_reports_sidebar() {
 
@@ -206,6 +233,10 @@ function display_reports_sidebar() {
 
 }
 
+/**
+ *  Display a navbar that let's user toggle to the sidebar
+ */
+
 function display_secondary_nav() {
 
   echo <<<EOT
@@ -217,6 +248,10 @@ function display_secondary_nav() {
 
   EOT;
 }
+
+/**
+ *  Display a row of dashboard icons for add/edit/profile/logout
+ */
 
 function display_dashboard_buttons() {
 
@@ -258,6 +293,11 @@ function display_dashboard_buttons() {
   EOT;
 }
 
+/**
+ *  Display a row of dashboard icons for add/edit/profile/logout for the reports pages
+ */
+
+
 function display_reports_dashboard_buttons() {
 
   echo <<<EOT
@@ -298,6 +338,22 @@ function display_reports_dashboard_buttons() {
   EOT;
 }
 
+/**
+ *  Load JavaScript for reports pages
+ */
+
+function load_reports_scripts() {
+
+  echo <<<EOT
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../js/jquery.slim.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/Chart.min.js"></script>
+
+  EOT;
+  
+}
 
 ?>
 
