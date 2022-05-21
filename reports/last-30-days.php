@@ -171,17 +171,8 @@
   <!-- Bootstrap core JavaScript -->
 <?php load_reports_scripts(); ?>
   
-  <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-  </script>
-  <script>
-    // All elements that have a data-feather attribute will be replaced with SVG markup corresponding to their data-feather attribute value.
-    feather.replace()
-  </script>
+  
+  
   <script>
 
     // Bar Chart for last 30 days
