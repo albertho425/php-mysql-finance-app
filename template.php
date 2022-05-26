@@ -242,7 +242,7 @@ function display_reports_sidebar() {
                 <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-7-days.php">Last 7 Days</a>
                 <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-30-days.php">Last 30 Days</a>
                 <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-30-days.php">This Year</a>
-                <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-30-days.php">All time</a>
+                <a class="dropdown-item" href="http://localhost:8888/Finance/reports/all-time.php">All time</a>
                 
                 
                 <a class="dropdown-item" href="#">Another action</a>
