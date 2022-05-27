@@ -144,8 +144,8 @@ function display_header() {
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-7-days.php">Last 7 Days</a>
             <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-30-days.php">Last 30 Days</a>
-            <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-30-days.php">This Year</a>
-            <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-30-days.php">All time</a>
+            <a class="dropdown-item" href="http://localhost:8888/Finance/reports/one-year.php">One Year</a>
+            <a class="dropdown-item" href="http://localhost:8888/Finance/reports/all-time.php">All time</a>
             
             
             <a class="dropdown-item" href="#">Another action</a>
@@ -197,13 +197,9 @@ function display_sidebar() {
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-7-days.php">Last 7 Days</a>
                 <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-30-days.php">Last 30 Days</a>
-                <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-30-days.php">This Year</a>
-                <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-30-days.php">All time</a>
+                <a class="dropdown-item" href="http://localhost:8888/Finance/reports/one-year.php">Last Year</a>
+                <a class="dropdown-item" href="http://localhost:8888/Finance/reports/all-time.php">All time</a>
                 
-                
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </li>
               
@@ -241,13 +237,8 @@ function display_reports_sidebar() {
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-7-days.php">Last 7 Days</a>
                 <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-30-days.php">Last 30 Days</a>
-                <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-30-days.php">This Year</a>
+                <a class="dropdown-item" href="http://localhost:8888/Finance/reports/one-year.php">One Year</a>
                 <a class="dropdown-item" href="http://localhost:8888/Finance/reports/all-time.php">All time</a>
-                
-                
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </li>
               
