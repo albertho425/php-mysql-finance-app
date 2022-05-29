@@ -22,6 +22,11 @@
   $exp_category_dc = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' AND expensedate >= (CURDATE() - INTERVAL 1 week) GROUP BY expensecategory");
   $exp_amt_dc = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' AND expensedate >= (CURDATE() - INTERVAL 1 week) GROUP BY expensecategory");
 
+
+  // average spent
+  $avg_category = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' AND expensedate >= (CURDATE() - INTERVAL 1 week) GROUP BY expensecategory");
+  $avg_category_spent = mysqli_query($con, "SELECT AVG(expense) FROM expenses WHERE user_id = '$userid' AND expensedate >= (CURDATE() - INTERVAL 1 week) GROUP BY expensecategory");
+
   // Pie chart spending of last 30 days
   $exp_category_dc2 = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' AND expensedate >= (CURDATE() - INTERVAL 1 week) GROUP BY expensecategory");
   $exp_amt_dc2 = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' AND expensedate >= (CURDATE() - INTERVAL 1 week)  GROUP BY expensecategory");
@@ -40,7 +45,14 @@
   $total_spent_last_7_days = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE expensedate > NOW() - INTERVAL 7 day AND user_id = '$userid'");
   $total_spent_last_7_days_output = $total_spent_last_7_days->fetch_array()[0] ?? '';
 
- 
+  // Max spent
+  $max_spent_last_7_days = mysqli_query($con, "SELECT MAX(expense) FROM expenses WHERE expensedate > NOW() - INTERVAL 7 day AND user_id = '$userid'");
+  $max_spent_last_7_days_output = $max_spent_last_7_days->fetch_array()[0] ?? '';
+
+  //Avg spent
+  $avg_spent_last_7_days = mysqli_query($con, "SELECT AVG(expense) FROM expenses WHERE expensedate > NOW() - INTERVAL 7 day AND user_id = '$userid'");
+  $avg_spent_last_7_days_output = number_format($avg_spent_last_7_days->fetch_array()[0] ?? '');
+
   $expenses_last_7_days = mysqli_query($con, "SELECT COUNT(*) from expenses WHERE expensedate > NOW() - INTERVAL 7 day AND user_id = '$userid'");
   $expenses_last_7_days_output = $expenses_last_7_days->fetch_array()[0] ?? '';
 ?>
@@ -95,6 +107,28 @@
           </div>
         </div>
 
+        <div class="row">
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title text-center">Max expense - Last 7 days</h5>
+              </div>
+              <div class="card-body">
+                <h3 class="text-center"> <?php  echo "$ ". $max_spent_last_7_days_output ?></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title text-center">Average expense - Last 7 days</h5>
+              </div>
+              <div class="card-body">
+              <h3 class="text-center"> <?php  echo "$ ". $avg_spent_last_7_days_output ?></h3>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="row">
           <div class="col-md">
@@ -159,7 +193,6 @@
           </div>
           
         </div>
-
        
         </div>
     </div>
@@ -337,6 +370,8 @@
         }]
       }
     });
+
+
    
   </script>
 <?php display_footer();?>
