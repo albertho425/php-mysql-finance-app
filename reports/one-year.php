@@ -17,6 +17,8 @@
 
   // SELECT COUNT(expense) AS 'Times', expensecategory FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY expensecategory
 
+  $query = "expensedate >= (CURDATE() - INTERVAL 1 year)";
+  $title = "In a year";
 
   // Bar chart
   $exp_category_dc = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' AND expensedate >= (CURDATE() - INTERVAL 1 year) GROUP BY expensecategory");
@@ -43,6 +45,14 @@
  
   $expenses_last_7_days = mysqli_query($con, "SELECT COUNT(*) from expenses WHERE expensedate >= (CURDATE() - INTERVAL 1 year) AND user_id = '$userid'");
   $expenses_last_7_days_output = $expenses_last_7_days->fetch_array()[0] ?? '';
+
+  // Max spent
+  $max_spent = mysqli_query($con, "SELECT MAX(expense) FROM expenses WHERE user_id = '$userid' AND $query");
+  $max_spent_output = $max_spent->fetch_array()[0] ?? '';
+
+  //Avg spent
+  $avg_spent = mysqli_query($con, "SELECT AVG(expense) FROM expenses WHERE  user_id = '$userid' AND $query");
+  $avg_spent_output = number_format($avg_spent->fetch_array()[0] ?? '');
 ?>
 
 
