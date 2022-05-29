@@ -43,6 +43,14 @@
  
   $expenses_last_7_days = mysqli_query($con, "SELECT COUNT(*) from expenses WHERE user_id = '$userid'");
   $expenses_last_7_days_output = $expenses_last_7_days->fetch_array()[0] ?? '';
+
+  // Max spent
+  $max_spent = mysqli_query($con, "SELECT MAX(expense) FROM expenses WHERE user_id = '$userid'");
+  $max_spent_output = $max_spent->fetch_array()[0] ?? '';
+
+  //Avg spent
+  $avg_spent = mysqli_query($con, "SELECT AVG(expense) FROM expenses WHERE  user_id = '$userid'");
+  $avg_spent_output = number_format($avg_spent->fetch_array()[0] ?? '');
 ?>
 
 
@@ -90,6 +98,29 @@
               </div>
               <div class="card-body">
               <h3 class="text-center"> <?php  echo "$ ". $total_spent_last_7_days_output ?></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title text-center">Max expense - All Time</h5>
+              </div>
+              <div class="card-body">
+                <h3 class="text-center"> <?php  echo "$ ". $max_spent_output ?></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title text-center">Average expense - All Time</h5>
+              </div>
+              <div class="card-body">
+              <h3 class="text-center"> <?php  echo "$ ". $avg_spent_output ?></h3>
               </div>
             </div>
           </div>
