@@ -1,22 +1,6 @@
 <?php
   include("../session.php");
   
-
-  //Average amount spent for last 30 days 
-  //SELECT AVG(expense) FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH)
-  //min
-  //max
- 
-  // SELECT SUM(expense), expensename FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY expensename
-
-  // SELECT SUM(expense), expensecategory FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY expensecategory
-
-  // SELECT SUM(expense), expensedate FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY expensedate
-
-  // SELECT COUNT(expense), expensecategory FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY expensecategory
-
-  // SELECT COUNT(expense) AS 'Times', expensecategory FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY expensecategory
-
   $query = "expensedate > NOW() - INTERVAL 30 day";
   $title = "Last 30 days";
 
