@@ -23,13 +23,13 @@ if (isset($_REQUEST['firstname'])) {
       header("Location: index.php");
     }
   } else {
-    echo ("ERROR: Please Check Your Password & Confirmation password");
+    echo ("Note: Password and Confirm Password must be identical.");
   }
 }
 ?>
 
 <?php include "template.php" ?>
-<?php template_header("Register");?>
+<?php template_header("Sign up");?>
 <!-- loads custom styling -->
 <link href="css/signup.css" rel="stylesheet">
 
@@ -38,7 +38,7 @@ if (isset($_REQUEST['firstname'])) {
     <form action="" method="POST" autocomplete="off">
     <h3 class="text-center">Sign Up</h3>
       <div class="col text-center"><br>
-            <a href="manage_expense.php"><img src="icon/contract.png" width="57px" /></a>
+            <a href="signup.php"><img src="icon/contract.png" width="57px" /></a>
         </div><br>
       <div class="form-group">
         <div class="row">
@@ -65,23 +65,6 @@ if (isset($_REQUEST['firstname'])) {
     </form>
     <div class="text-center">Already have an account? <a class="text-success" href="login.php">Login Here</a></div>
   </div>
-  <?php display_footer();?>
 
 </body>
-<!-- Bootstrap core JavaScript -->
-<script src="js/jquery.slim.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<!-- Croppie -->
-<script src="js/profile-picture.js"></script>
-<!-- Menu Toggle Script -->
-<script>
-  $("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-  });
-</script>
-<script>
-  feather.replace()
-</script>
-
 </html>

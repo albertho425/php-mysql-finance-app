@@ -36,7 +36,7 @@ if (isset($_POST['email'])) {
       <h3 class="text-center">Expense App</h3>
       <div class="form-group">
         <div class="col text-center"><br>
-            <a href="manage_expense.php"><img src="icon/money-bag.png" width="57px" /></a>
+            <a href="login.php"><img src="icon/money-bag.png" width="57px" /></a>
         </div><br>
         <input type="text" name="email" class="form-control" placeholder="Email" required="required">
       </div>
@@ -57,18 +57,4 @@ if (isset($_POST['email'])) {
     
 
 </body>
-<!-- Bootstrap core JavaScript -->
-<script src="js/jquery.slim.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<!-- Menu Toggle Script -->
-<script>
-  $("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-  });
-</script>
-<script>
-  feather.replace()
-</script>
-
 </html>
