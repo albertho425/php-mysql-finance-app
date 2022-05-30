@@ -1,21 +1,5 @@
 <?php
   include("../session.php");
-  
-
-  //Average amount spent for last 30 days 
-  //SELECT AVG(expense) FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH)
-  //min
-  //max
- 
-  // SELECT SUM(expense), expensename FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY expensename
-
-  // SELECT SUM(expense), expensecategory FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY expensecategory
-
-  // SELECT SUM(expense), expensedate FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY expensedate
-
-  // SELECT COUNT(expense), expensecategory FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY expensecategory
-
-  // SELECT COUNT(expense) AS 'Times', expensecategory FROM expenses WHERE user_id = 7 AND expensedate >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY expensecategory
 
   $query = "expensedate >= (CURDATE() - INTERVAL 1 year)";
   $title = "In a year";
@@ -28,13 +12,15 @@
   $exp_category_dc2 = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' AND expensedate >= (CURDATE() - INTERVAL 1 year) GROUP BY expensecategory");
   $exp_amt_dc2 = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' AND expensedate >= (CURDATE() - INTERVAL 1 year)  GROUP BY expensecategory");
 
+  // Doughnut chart
   $exp_category_dc3 = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' AND expensedate >= (CURDATE() - INTERVAL 1 year) GROUP BY expensecategory");
   $exp_amt_dc3 = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' AND expensedate >= (CURDATE() - INTERVAL 1 year) GROUP BY expensecategory");
 
-
+  // Line chart 1
   $exp_date_line = mysqli_query($con, "SELECT expensedate FROM expenses WHERE user_id = '$userid' AND expensedate >= (CURDATE() - INTERVAL 1 year) GROUP BY expensedate");
   $exp_amt_line = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' AND expensedate >= (CURDATE() - INTERVAL 1 year) GROUP BY expensedate");
 
+  // Line chart 2
   $exp_date_line2 = mysqli_query($con, "SELECT expensedate FROM expenses WHERE user_id = '$userid' AND expensedate >= (CURDATE() - INTERVAL 1 year) GROUP BY expensedate");
   $exp_amt_line2 = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' AND expensedate >= (CURDATE() - INTERVAL 1 year) GROUP BY expensedate");
   
@@ -100,6 +86,29 @@
               </div>
               <div class="card-body">
               <h3 class="text-center"> <?php  echo "$ ". $total_spent_last_7_days_output ?></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title text-center">Max expense - <?php echo $title;?></h5>
+              </div>
+              <div class="card-body">
+                <h3 class="text-center"> <?php  echo "$ ". $max_spent_output ?></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title text-center">Average expense - <?php echo $title;?></h5>
+              </div>
+              <div class="card-body">
+              <h3 class="text-center"> <?php  echo "$ ". $avg_spent_output ?></h3>
               </div>
             </div>
           </div>

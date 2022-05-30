@@ -1,21 +1,25 @@
 <?php
   include("../session.php");
+
+  $title = "All time";
   
   // Bar chart
-  $exp_category_dc = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' AND expensedate >= (CURDATE() - INTERVAL 1 week) GROUP BY expensecategory");
+  $exp_category_dc = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
   $exp_amt_dc = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
 
   // Pie chart 
   $exp_category_dc2 = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
   $exp_amt_dc2 = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid'  GROUP BY expensecategory");
 
+  // Doghnut Chart
   $exp_category_dc3 = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
   $exp_amt_dc3 = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
 
-
+  // Line chart 1
   $exp_date_line = mysqli_query($con, "SELECT expensedate FROM expenses WHERE user_id = '$userid' GROUP BY expensedate");
   $exp_amt_line = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' GROUP BY expensedate");
 
+  // Line chart 2
   $exp_date_line2 = mysqli_query($con, "SELECT expensedate FROM expenses WHERE user_id = '$userid' GROUP BY expensedate");
   $exp_amt_line2 = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' GROUP BY expensedate");
   
@@ -67,7 +71,7 @@
           <div class="col-md">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title text-center">Total Transactions - All Time</h5>
+                <h5 class="card-title text-center">Total Transactions - <?php echo $title;?></h5>
               </div>
               <div class="card-body">
                 <h3 class="text-center"> <?php  echo $expenses_last_7_days_output ?></h3>
@@ -77,7 +81,7 @@
           <div class="col-md">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title text-center">Total Spent - All Time</h5>
+                <h5 class="card-title text-center">Total Spent - <?php echo $title;?></h5>
               </div>
               <div class="card-body">
               <h3 class="text-center"> <?php  echo "$ ". $total_spent_last_7_days_output ?></h3>
@@ -90,7 +94,7 @@
           <div class="col-md">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title text-center">Max expense - All Time</h5>
+                <h5 class="card-title text-center">Max expense - <?php echo $title;?></h5>
               </div>
               <div class="card-body">
                 <h3 class="text-center"> <?php  echo "$ ". $max_spent_output ?></h3>
@@ -100,7 +104,7 @@
           <div class="col-md">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title text-center">Average expense - All Time</h5>
+                <h5 class="card-title text-center">Average expense - <?php echo $title;?></h5>
               </div>
               <div class="card-body">
               <h3 class="text-center"> <?php  echo "$ ". $avg_spent_output ?></h3>
@@ -114,7 +118,7 @@
           <div class="col-md">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title text-center">Pie Chart - All Time</h5>
+                <h5 class="card-title text-center">Pie Chart - <?php echo $title;?></h5>
               </div>
               <div class="card-body">
                 <canvas id="expense_category_pie2" height="150"></canvas>
@@ -125,7 +129,7 @@
           <div class="col-md">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title text-center">Bar Chart - All Time</h5>
+                <h5 class="card-title text-center">Bar Chart - <?php echo $title;?></h5>
               </div>
               <div class="card-body">
                 <canvas id="expense_category_pie" height="150"></canvas>
@@ -139,7 +143,7 @@
           <div class="col-md">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title text-center">Line Graph - All Time</h5>
+                <h5 class="card-title text-center">Line Graph - <?php echo $title;?></h5>
               </div>
               <div class="card-body">
                 <canvas id="expense_line" height="150"></canvas>
