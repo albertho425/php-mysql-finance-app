@@ -1,7 +1,7 @@
 <?php
 require('config.php');
 session_start();
-$errormsg = "";
+
 if (isset($_POST['email'])) {
 
   $email = stripslashes($_REQUEST['email']);
@@ -11,14 +11,22 @@ if (isset($_POST['email'])) {
   $query = "SELECT * FROM `users` WHERE email='$email'and password='" . md5($password) . "'";
   $result = mysqli_query($con, $query) or die(mysqli_error($con));
   $rows = mysqli_num_rows($result);
+
+  if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+    $msg['email'] = '<b>Please use a valid email</b>';
+  }
+  
+  if (empty($password)) {
+    $msg['password'] = '<b>Please enter your password</b>';
+  }
+  
+  //login is successful
   if ($rows == 1) {
     $_SESSION['email'] = $email;
     header("Location: index.php");
-  } else {
-    $errormsg  = "Wrong";
   }
-} else {
-}
+}  
+
 ?>
 
 <?php include "template.php" ?>
@@ -38,10 +46,21 @@ if (isset($_POST['email'])) {
         <div class="col text-center"><br>
             <a href="login.php"><img src="icon/money-bag.png" width="57px" /></a>
         </div><br>
-        <input type="text" name="email" class="form-control" placeholder="Email" required="required">
+        <label for="email">Email</label> 
+        <input type="text" name="email" class="form-control" placeholder="Email" value="<?php echo isset($_POST['email']) ? $email : ''; ?>">
+
+        <?php if(isset($msg['email'])): ?>
+        <p> <?php echo $msg['email']; ?>
+        <?php endif; ?>
+
+        
       </div>
       <div class="form-group">
-        <input type="password" name="password" class="form-control" placeholder="Password" required="required">
+        <input type="password" name="password" class="form-control" placeholder="Password" value="<?php echo isset($_POST['password']) ? $password : ''; ?>">
+
+        <?php if(isset($msg['password'])): ?>
+        <p> <?php echo $msg['password']; ?>
+        <?php endif; ?>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-lg btn-success">Login</button>
