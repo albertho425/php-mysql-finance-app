@@ -53,7 +53,7 @@ if (isset($_POST['email'])) {
             <a href="login.php"><img src="icon/money-bag.png" width="57px" /></a>
         </div><br>
         <label for="email">Email</label> 
-        <input type="text" name="email" class="form-control" placeholder="Email" 
+        <input type="text" name="email" class="form-control"  
           value="<?php echo isset($_POST['email']) ? $email : ''; ?>">
         
         <!-- output error message and error class for email field -->
@@ -63,7 +63,8 @@ if (isset($_POST['email'])) {
         
       </div> <!--form-group-->
       <div class="form-group">
-        <input type="password" name="password" class="form-control" placeholder="Password" 
+        <label for="password">Password</label> 
+        <input type="password" name="password" class="form-control"
           value="<?php echo isset($_POST['password']) ? $password : ''; ?>">
 
         <!-- output error message and error class for password field -->
