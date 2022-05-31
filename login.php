@@ -16,8 +16,6 @@ if (isset($_POST['email'])) {
     $msg['email'] = [
       'msg' => 'Please use a valid email',
       'class' => 'alert-danger'];
-    
-    
   }
   
   if (empty($password)) {
@@ -31,25 +29,19 @@ if (isset($_POST['email'])) {
     $_SESSION['email'] = $email;
     header("Location: index.php");
   } else {
+  //login failed
     $msg['login'] = [
       'msg' => 'Login failed. Please try again',
       'class' => 'alert-danger'];
-      }
-  
-    
+      }  
   }
- 
-
 ?>
 
 <?php include "template.php" ?>
-
 <!-- loads HTML template and Bootstrap   -->
 <?php template_header("Login"); ?>
-
 <!-- loads custom styling -->
 <link href="css/login.css" rel="stylesheet">
-
 
 <body>
   
@@ -83,7 +75,8 @@ if (isset($_POST['email'])) {
 
       <div class="form-group">
         <button type="submit" class="btn btn-lg btn-success">Login</button>
-            <!-- output error message and error class for password field -->
+        
+        <!-- output error message and error class for login field -->
         <?php if(isset($msg['login'])): ?>
             <div class="alert <?php echo $msg['login']['class']; ?>"><?php echo $msg['login']['msg']?></div>
          <?php endif; ?>
@@ -100,6 +93,5 @@ if (isset($_POST['email'])) {
       <p class="text-center">Forgot Password?<a href="reset.php" class="text-danger"> Reset Here</a></p>
     </div>
     
-
 </body>
 </html>
