@@ -13,28 +13,42 @@ if (isset($_POST['email'])) {
   $rows = mysqli_num_rows($result);
 
   if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-    $msg['email'] = '<b>Please use a valid email</b>';
+    $msg['email'] = [
+      'msg' => 'Please use a valid email',
+      'class' => 'alert-danger'];
+    
+    
   }
   
   if (empty($password)) {
-    $msg['password'] = '<b>Please enter your password</b>';
-  }
+    $msg['password'] = [
+      'msg' => 'Please enter a passwowrd',
+      'class' => 'alert-danger'];
+      }
   
   //login is successful
   if ($rows == 1) {
     $_SESSION['email'] = $email;
     header("Location: index.php");
+  } else {
+    $msg['login'] = [
+      'msg' => 'Login failed. Please try again',
+      'class' => 'alert-danger'];
+      }
+  
+    
   }
-}  
+ 
 
 ?>
 
 <?php include "template.php" ?>
+
 <!-- loads HTML template and Bootstrap   -->
 <?php template_header("Login"); ?>
+
 <!-- loads custom styling -->
 <link href="css/login.css" rel="stylesheet">
-
 
 
 <body>
@@ -47,23 +61,35 @@ if (isset($_POST['email'])) {
             <a href="login.php"><img src="icon/money-bag.png" width="57px" /></a>
         </div><br>
         <label for="email">Email</label> 
-        <input type="text" name="email" class="form-control" placeholder="Email" value="<?php echo isset($_POST['email']) ? $email : ''; ?>">
-
-        <?php if(isset($msg['email'])): ?>
-        <p> <?php echo $msg['email']; ?>
-        <?php endif; ?>
-
+        <input type="text" name="email" class="form-control" placeholder="Email" 
+          value="<?php echo isset($_POST['email']) ? $email : ''; ?>">
         
-      </div>
+        <!-- output error message and error class for email field -->
+        <?php if(isset($msg['email'])): ?>
+            <div class="alert <?php echo $msg['email']['class']; ?>"><?php echo $msg['email']['msg']?></div>
+         <?php endif; ?>
+        
+      </div> <!--form-group-->
       <div class="form-group">
-        <input type="password" name="password" class="form-control" placeholder="Password" value="<?php echo isset($_POST['password']) ? $password : ''; ?>">
+        <input type="password" name="password" class="form-control" placeholder="Password" 
+          value="<?php echo isset($_POST['password']) ? $password : ''; ?>">
 
+        <!-- output error message and error class for password field -->
         <?php if(isset($msg['password'])): ?>
-        <p> <?php echo $msg['password']; ?>
-        <?php endif; ?>
-      </div>
+            <div class="alert <?php echo $msg['password']['class']; ?>"><?php echo $msg['password']['msg']?></div>
+         <?php endif; ?>
+
+      </div> <!--form-group-->
+
       <div class="form-group">
         <button type="submit" class="btn btn-lg btn-success">Login</button>
+            <!-- output error message and error class for password field -->
+        <?php if(isset($msg['login'])): ?>
+            <div class="alert <?php echo $msg['login']['class']; ?>"><?php echo $msg['login']['msg']?></div>
+         <?php endif; ?>
+
+        
+
         <span style="padding-left:10px;" class="">New User?<a href="signup.php" class="text-danger"> Sign up Here</a></span>
       </div>
       <div class="clearfix">
