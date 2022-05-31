@@ -66,13 +66,13 @@ form {
   }
 
   .signup-form .hint-text {
-    color: #999;
+    color: black;
     margin-bottom: 30px;
     text-align: center;
   }
 
   .signup-form form {
-    color: #999;
+    color: black;
     border-radius: 3px;
     margin-bottom: 15px;
     background: #fff;
