@@ -28,13 +28,14 @@ if (isset($_POST['email'])) {
   if ($rows == 1) {
     $_SESSION['email'] = $email;
     header("Location: index.php");
-  } else {
+    //email is valid and password is not empty
+  } else if (($email) && ($password)) 
   //login failed
     $msg['login'] = [
       'msg' => 'Login failed. Please try again',
       'class' => 'alert-danger'];
       }  
-  }
+  
 ?>
 
 <?php include "template.php" ?>
