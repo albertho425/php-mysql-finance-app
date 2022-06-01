@@ -1,6 +1,8 @@
 <?php
 require('config.php');
 session_start();
+$msg = [];
+
 
 if (isset($_POST['email'])) {
 
