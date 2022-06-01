@@ -187,12 +187,12 @@ function display_sidebar() {
            
             <div class="sidebar-heading">Management</div>
             <div class="list-group list-group-flush">
-              <a href="index.php" class="list-group-item list-group-item-action sidebar-active"><span data-feather="home"></span> Dashboard</a>
-              <a href="add_expense.php" class="list-group-item list-group-item-action "><span data-feather="plus-square"></span> Add Expenses</a>
-              <a href="manage_expense.php" class="list-group-item list-group-item-action "><span data-feather="dollar-sign"></span>Edit Expenses</a>
+              <a href="index.php" class="list-group-item list-group-item-action sidebar-active">Dashboard</a>
+              <a href="add_expense.php" class="list-group-item list-group-item-action ">Add Expenses</a>
+              <a href="manage_expense.php" class="list-group-item list-group-item-action ">Edit Expenses</a>
               <li style="list-style-type: none;" class="nav-item dropdown">
               <a class="list-group-item nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span data-feather="dollar-sign"></span>Report</a>
+              Report</a>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-7-days.php">Last 7 Days</a>
@@ -206,8 +206,8 @@ function display_sidebar() {
             </div>
             <div class="sidebar-heading">Settings </div>
             <div class="list-group list-group-flush">
-              <a href="profile.php" class="list-group-item list-group-item-action "><span data-feather="user"></span> Profile</a>
-              <a href="logout.php" class="list-group-item list-group-item-action "><span data-feather="power"></span> Logout</a>
+              <a href="profile.php" class="list-group-item list-group-item-action ">Profile</a>
+              <a href="logout.php" class="list-group-item list-group-item-action ">Logout</a>
             </div>
           </div>
   <!-- /#sidebar-wrapper -->
@@ -227,12 +227,11 @@ function display_reports_sidebar() {
            
             <div class="sidebar-heading">Management</div>
             <div class="list-group list-group-flush">
-              <a href="../index.php" class="list-group-item list-group-item-action sidebar-active"><span data-feather="home"></span> Dashboard</a>
-              <a href="../add_expense.php" class="list-group-item list-group-item-action "><span data-feather="plus-square"></span> Add Expenses</a>
-              <a href="../manage_expense.php" class="list-group-item list-group-item-action "><span data-feather="dollar-sign"></span>Edit Expenses</a>
+              <a href="../index.php" class="list-group-item list-group-item-action sidebar-active"> Dashboard</a>
+              <a href="../add_expense.php" class="list-group-item list-group-item-action ">Add Expenses</a>
+              <a href="../manage_expense.php" class="list-group-item list-group-item-action ">Edit Expenses</a>
               <li style="list-style-type: none;" class="nav-item dropdown">
-              <a class="list-group-item nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span data-feather="dollar-sign"></span>Report</a>
+              <a class="list-group-item nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Report</a>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="http://localhost:8888/Finance/reports/last-7-days.php">Last 7 Days</a>
@@ -245,8 +244,8 @@ function display_reports_sidebar() {
             </div>
             <div class="sidebar-heading">Settings </div>
             <div class="list-group list-group-flush">
-              <a href="profile.php" class="list-group-item list-group-item-action "><span data-feather="user"></span> Profile</a>
-              <a href="logout.php" class="list-group-item list-group-item-action "><span data-feather="power"></span> Logout</a>
+              <a href="profile.php" class="list-group-item list-group-item-action ">Profile</a>
+              <a href="logout.php" class="list-group-item list-group-item-action ">Logout</a>
             </div>
           </div>
   <!-- /#sidebar-wrapper -->
