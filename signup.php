@@ -1,14 +1,17 @@
 <?php
 require('config.php');
+session_start();
 
 $msg = [];
 
-if (isset($_REQUEST['firstname'])) {
+
+if (isset($_POST['password'])) {
 
   if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
     $msg['email'] = [
       'msg' => 'Please use a valid email',
       'class' => 'alert-danger'];
+      
   }
 
   if (empty($firstname)) {
@@ -35,34 +38,48 @@ if (isset($_REQUEST['firstname'])) {
       'class' => 'alert-danger'];
       }
 
-  // if the two passwords match, insert into database
-  if ($_REQUEST['password'] == $_REQUEST['confirm_password']) {
+  
+  if (($password) AND ($confirm_password)) {
+
+      // if the two passwords match, insert into database
+    if ($_REQUEST['password'] == $_REQUEST['confirm_password']) {
+      $firstname = stripslashes($_REQUEST['firstname']);
+      $firstname = mysqli_real_escape_string($con, $firstname);
+      $lastname = stripslashes($_REQUEST['lastname']);
+      $lastname = mysqli_real_escape_string($con, $lastname);
+      $email = stripslashes($_REQUEST['email']);
+      $email = mysqli_real_escape_string($con, $email);
+      $password = stripslashes($_REQUEST['password']);
+      $password = mysqli_real_escape_string($con, $password);
+    
+    
+    
+      $query = "INSERT into `users` (firstname, lastname, password, email) VALUES ('$firstname','$lastname', '" . md5($password) . "', '$email')";
+      $result = mysqli_query($con, $query);
+  } 
+}
 
     
-    $firstname = stripslashes($_REQUEST['firstname']);
-    $firstname = mysqli_real_escape_string($con, $firstname);
-    $lastname = stripslashes($_REQUEST['lastname']);
-    $lastname = mysqli_real_escape_string($con, $lastname);
-    $email = stripslashes($_REQUEST['email']);
-    $email = mysqli_real_escape_string($con, $email);
-    $password = stripslashes($_REQUEST['password']);
-    $password = mysqli_real_escape_string($con, $password);
 
-  
+    $query2 = "SELECT * FROM `users` WHERE email='$email'and password='" . md5($password) . "'";
+    $result2 = mysqli_query($con, $query2) or die(mysqli_error($con));
+    $rows2 = mysqli_num_rows($result2);
 
-    $query = "INSERT into `users` (firstname, lastname, password, email) VALUES ('$firstname','$lastname', '" . md5($password) . "', '$email')";
-    $result = mysqli_query($con, $query);
-    if ($result) {
+
+    //login is successful
+    if ($rows2 == 1) {
+      $_SESSION['email'] = $email;
       header("Location: index.php");
     }
-    else {     echo ("Note: Password and Confirm Password must be identical.");
+    else { 
+      echo ("Note: Password and Confirm Password must be identical.");
 
       // $msg['confirm_password'] = [
       //   'msg' => 'The two passwords are not the same',
       //   'class' => 'alert-danger'];  
     }
   } 
-}
+
 ?>
 
 <?php include "template.php" ?>
@@ -126,11 +143,11 @@ if (isset($_REQUEST['firstname'])) {
         </div>
 
         <div class="form-group">
-        <label for="confirm_password">Confirm Password</label> 
-          <input type="password" class="form-control" name="confirm_password" value="<?php echo isset($_POST['confirm_password']) ? $confirm_password : ''; ?>">     
+        <label for="password">Confirm Password</label> 
+          <input type="password" class="form-control" name="password" value="<?php echo isset($_POST['password']) ? $password : ''; ?>">     
           <!-- output error message and error class for password field -->
-          <?php if(isset($msg['confirm_password'])): ?>
-          <div class="alert <?php echo $msg['confirm_password']['class']; ?>"><?php echo $msg['confirm_password']['msg']?></div>
+          <?php if(isset($msg['password'])): ?>
+          <div class="alert <?php echo $msg['password']['class']; ?>"><?php echo $msg['password']['msg']?></div>
           <?php endif; ?>
         </div>
 
