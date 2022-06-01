@@ -3,18 +3,21 @@ require('config.php');
 session_start();
 
 $msg = [];
-$firstname = stripslashes($_REQUEST['firstname']);
-$firstname = mysqli_real_escape_string($con, $firstname);
-$lastname = stripslashes($_REQUEST['lastname']);
-$lastname = mysqli_real_escape_string($con, $lastname);
-$email = stripslashes($_REQUEST['email']);
-$email = mysqli_real_escape_string($con, $email);
-$password = stripslashes($_REQUEST['password']);
-$password = mysqli_real_escape_string($con, $password);
-$rows = $rows2 = $confirm_password = null;
+$firstname = $lastname = $email = $password = $confirm_password = $row = $row2 = null;
 
 
-if (isset($_POST['confirm_password'])) {
+if (isset($_POST['firstname'])) {
+
+  $firstname = stripslashes($_REQUEST['firstname']);
+  $firstname = mysqli_real_escape_string($con, $firstname);
+  $lastname = stripslashes($_REQUEST['lastname']);
+  $lastname = mysqli_real_escape_string($con, $lastname);
+  $email = stripslashes($_REQUEST['email']);
+  $email = mysqli_real_escape_string($con, $email);
+  $password = stripslashes($_REQUEST['password']);
+  $password = mysqli_real_escape_string($con, $password);
+  $confirm_password = stripslashes($_REQUEST['confirm_password']);
+  $confirm_password = mysqli_real_escape_string($con, $confirm_password);
 
   if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
     $msg['email'] = [
@@ -47,25 +50,37 @@ if (isset($_POST['confirm_password'])) {
       'class' => 'alert-danger'];
       }
 
+  
+
   // password and confirm password are NOT empty
   if (($password) AND ($confirm_password)) {
-
-      // if the two passwords match, insert into database
+    // if the two passwords match, insert into database
     if ($_REQUEST['password'] == $_REQUEST['confirm_password']) {
       
-    
-    
+
       $query = "INSERT into `users` (firstname, lastname, password, email) VALUES ('$firstname','$lastname', '" . md5($password) . "', '$email')";
       $result = mysqli_query($con, $query);
+      $row = mysqli_num_rows($result);
 
       $query2 = "SELECT * FROM `users` WHERE email='$email'and password='" . md5($password) . "'";
       $result2 = mysqli_query($con, $query2) or die(mysqli_error($con));
-      $rows2 = mysqli_num_rows($result2);
-
+      $row2 = mysqli_num_rows($result2);
+      echo "passwords are the same";
       //login is successful
-      if ($rows2 == 1) {
+      if ($row == 1) {
         $_SESSION['email'] = $email;
         header("Location: index.php");
+        echo "first condition";
+        print_r($password);
+      }
+
+      if ($row2 == 1)
+      
+      {
+        $_SESSION['email'] = $email;
+        header("Location: index.php");
+        echo "second condition";
+        print_r($password);
       }
       else { 
     
@@ -128,22 +143,23 @@ if (isset($_POST['confirm_password'])) {
 
         <div class="form-group">
           <label for="password">Password</label> 
-          <input type="text" name="password" class="form-control" 
+          <input type="password" name="password" class="form-control" 
             value="<?php echo isset($_POST['password']) ? $password : ''; ?>">     
             
             <!-- output error message and error class for password field -->
           <?php if(isset($msg['password'])): ?>
           <div class="alert <?php echo $msg['password']['class']; ?>"><?php echo $msg['password']['msg']?></div>
+         <?php print_r($password);?>
           <?php endif; ?>
         </div>
 
         <div class="form-group">
         <label for="confirm_password">Confirm Password</label> 
-          <input type="text" class="form-control" name="confirm_password" value="<?php echo isset($_POST['confirm_password']) ? $confirm_password : ''; ?>">     
+          <input type="password" class="form-control" name="confirm_password" value="<?php echo isset($_POST['confirm_password']) ? $confirm_password : ''; ?>">     
           <!-- output error message and error class for confirm_password field -->
           <?php if(isset($msg['confirm_password'])): ?>
           <div class="alert <?php echo $msg['confirm_password']['class']; ?>"><?php echo $msg['confirm_password']['msg']?></div>
-          
+          <?php print_r($confirm_password);?>
           <?php endif; ?>
           
         </div>
@@ -153,8 +169,8 @@ if (isset($_POST['confirm_password'])) {
         </div>
 
         <div class="form-group">
-          <a class="btn btn-md btn-light" href="http://localhost:8888/Finance/login.php">Cancel</a>
-          <button type="submit" class="btn btn-success btn-md">Register</button>
+        <button type="submit" class="btn btn-success btn-md">Register</button>
+          <a class="btn btn-md btn-warning" href="http://localhost:8888/Finance/login.php">Cancel</a>
         </div>
 
     </form>
