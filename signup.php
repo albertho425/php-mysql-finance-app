@@ -165,16 +165,16 @@ if (isset($_POST['firstname'])) {
         </div>
 
         <div class="form-group">
-          <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+          <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a class="text-primary" href="#">Terms of Use</a> &amp; <a class="text-primary" href="#">Privacy Policy</a></label>
         </div>
 
         <div class="form-group">
         <button type="submit" class="btn btn-success btn-md">Register</button>
-          <a class="btn btn-md btn-warning" href="http://localhost:8888/Finance/login.php">Cancel</a>
+          <a class="btn btn-outline-secondary btn-md" href="http://localhost:8888/Finance/login.php">Cancel</a>
         </div>
 
     </form>
-    <div class="text-center">Already have an account? <a class="text-success" href="login.php">Login Here</a></div>
+    <div class="form-group">Already have an account? <a class="text-primary" href="login.php">Login Here</a></div>
   </div>
   <?php print_r($confirm_password); ?>
 </body>
