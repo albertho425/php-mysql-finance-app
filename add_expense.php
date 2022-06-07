@@ -172,9 +172,9 @@ if (isset($_POST['delete'])) {
                                      <legend class="col-form-label col-sm-6 pt-0"><b>Category</b></legend>
                                      <div class="col-md">
 
-                                        <select class="form-control" name="expensecategory" required>
+                                        <select class="form-control" name="expensecategory" required="required">
 
-                                            <option value="none" selected>Select a category</option>
+                                            <option value="" selected>Select a category</option>
                                             <option value="Health"<?php if($expensecategory == "Health"){ echo " selected='selected'"; } ?>>Health </option>
                                             <option value="Food"<?php if($expensecategory == "Food"){ echo " selected='selected'"; } ?>>Food </option>
                                             <option value="Fun"<?php if($expensecategory == "Fun"){ echo " selected='selected'"; } ?>>Fun </option>
