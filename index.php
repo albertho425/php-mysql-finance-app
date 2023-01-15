@@ -34,7 +34,8 @@
   $total_spent_last_30_days = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE expensedate > NOW() - INTERVAL 30 day AND user_id = '$userid'");
   $total_spent_last_30_days_output = $total_spent_last_30_days->fetch_array()[0] ?? '';
 
-  $avg_spent_per_month = mysqli_query($con, "SELECT month(expensedate), avg(expense) from expenses group by month(expensedate) AND user_id = '$userid'");
+  // query below is causing a fatal error
+  // $avg_spent_per_month = mysqli_query($con, "SELECT month(expensedate), avg(expense) from expenses group by month(expensedate) AND user_id = '$userid'");
   //$avg_spent_per_month_output = $avg_spent_per_month->fetch_array()[0] ?? '';
 
   $testQuery = mysqli_query($con, "SELECT year(expensedate), month(expensedate), sum(expense) FROM expenses WHERE user_id = 7 GROUP BY year(expensedate), month(expensedate)");
@@ -201,8 +202,6 @@
 
   </div>
   <!-- /#wrapper -->
-
-  <?php  print_r($testQuery); ?>
       
   <!-- Bootstrap core JavaScript -->
   <script src="js/jquery.slim.min.js"></script>
